@@ -1,0 +1,33 @@
+import { fetchSanityData } from '../../lib/sanity-utils'
+import { Accessories } from '../../lib/types'
+
+/**
+ * GROQ запрос для получения данных секции Accessories
+ */
+const accessoriesQuery = `*[_type == "accessories"][0]{
+  _type,
+  title,
+  description,
+  slogan,
+  cards[]{
+    image{
+      _type,
+      asset->{
+        _ref,
+        url
+      },
+      crop,
+      hotspot,
+      alt
+    },
+    title
+  }
+}`
+
+/**
+ * Получает данные для секции Accessories
+ * @returns Данные секции Accessories
+ */
+export async function getAccessories(): Promise<Accessories> {
+  return fetchSanityData<Accessories>(accessoriesQuery)
+}
