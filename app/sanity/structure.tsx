@@ -1,5 +1,5 @@
 import type { StructureResolver } from 'sanity/structure'
-import { HashIcon, TrolleyIcon, EarthGlobeIcon, CogIcon } from '@sanity/icons'
+import { HashIcon, EarthGlobeIcon, CogIcon } from '@sanity/icons'
 import { CUSTOM_STRUCTURED_SCHEMAS } from './schemaTypes'
 
 // https://www.sanity.io/docs/structure-builder-cheat-sheet
