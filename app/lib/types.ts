@@ -64,9 +64,8 @@ export type Hero = {
  */
 export type Slogan = {
   _type: "slogan";
-  title: string;
   slogan: string;
-  backgroundImage: SanityImage;
+  backgroundMedia: BackgroundMedia;
 };
 
 /**

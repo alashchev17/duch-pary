@@ -1,14 +1,18 @@
 import { Container } from "@/components/design-system";
 import { Header } from "@/components/design-system/Layout/Header";
-import { getAllPageDataWithSeparateQueries } from "./api";
-import { Hero } from "@/components/sections/Hero/Hero";
+
+import { Hero } from "@/components/sections/Hero";
+import { Slogan } from "@/components/sections/Slogan";
+
+import { getAllPageDataWithSeparateQueries } from "@/app/api";
 
 export default async function Home() {
-  const { hero } = await getAllPageDataWithSeparateQueries();
+  const { hero, slogan } = await getAllPageDataWithSeparateQueries();
   return (
     <Container fullWidth>
       <Header />
       <Hero data={hero} />
+      <Slogan data={slogan} />
     </Container>
   );
 }
