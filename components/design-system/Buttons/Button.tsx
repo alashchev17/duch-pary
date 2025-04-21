@@ -22,7 +22,7 @@ export const Button: React.FC<ButtonProps> = ({
 }) => {
   // Base classes for all buttons
   const baseClasses =
-    "inline-flex items-center justify-center font-manrope font-bold border-[3px] transition-all duration-200 group";
+    "flex items-center justify-center border-[3px] transition-all duration-200 group";
 
   // Variant-specific classes
   const variantClasses = {
@@ -34,7 +34,7 @@ export const Button: React.FC<ButtonProps> = ({
 
   // Size-specific classes
   const size =
-    "text-[20px] font-bold font-manrope py-[18px] px-[28px] leading-[90%] rounded-[20px]";
+    "text-menu-mobile md:text-menu-desktop py-[18px] px-[28px] rounded-[20px]";
 
   // Additional conditional classes
   const widthClass = fullWidth ? "w-full" : "";
