@@ -17,7 +17,7 @@ export const Hero: React.FC<HeroProps> = ({ data }) => {
 
   return (
     <Flex
-      className="py-8 max-h-[calc(100vh-4.5rem)] gap-3 md:gap-6"
+      className="py-8 max-h-[calc(100vh-5rem)] gap-3 md:gap-6"
       direction="column"
     >
       <Typography
