@@ -27,11 +27,11 @@ export const Hero: React.FC<HeroProps> = ({ data }) => {
         {data.title}
       </Typography>
 
-      <div className="relative w-full flex-1 min-h-0 rounded-design overflow-hidden">
+      <div className="relative w-full h-[100vh] rounded-design overflow-hidden">
         {type === "video" ? (
           <HeroVideo
             url={data.backgroundMedia.video.asset.url}
-            className="[&>video]:object-cover max-h-[48%]"
+            className="w-full [&>video]:object-cover"
           />
         ) : (
           <HeroImage
