@@ -1,0 +1,94 @@
+/* Typography styles based on Figma design system */
+/* Note: Nevduplenysh font needs to be added via @font-face declaration */
+
+/* Base styles */
+.uppercase {
+  text-transform: uppercase;
+}
+
+/* Desktop styles */
+.header1 {
+  font-family: (--font-spectral);
+  font-weight: 500; /* Medium */
+  font-size: 48px;
+  line-height: 80%;
+  color: #ffffff;
+}
+
+.header2 {
+  font-family: 'Nevduplenysh', serif;
+  font-size: 64px;
+  line-height: 80%;
+  color: #ffffff;
+}
+
+.header3 {
+  font-family: 'Spectral SC', serif;
+  font-weight: 400; /* Regular */
+  font-size: 32px;
+  line-height: 115%;
+  color: #ffffff;
+}
+
+.header4 {
+  font-family: 'Spectral SC', serif;
+  font-weight: 400; /* Regular */
+  font-size: 24px;
+  line-height: 110%;
+  color: #ffffff;
+}
+
+.blockName {
+  font-family: 'Spectral SC', serif;
+  font-weight: 500; /* Medium */
+  font-size: 20px;
+  letter-spacing: 10%;
+  color: #ffffff;
+}
+
+.menuBottoms {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 600; /* SemiBold */
+  font-size: 20px;
+  line-height: 100%;
+  color: #ffffff;
+}
+
+.body {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 400; /* Regular */
+  font-size: 20px;
+  line-height: 125%;
+  color: #ffffff;
+}
+
+/* Mobile styles - add media queries */
+@media (max-width: 768px) {
+  .header1 {
+    font-size: 26px;
+  }
+
+  .header2 {
+    font-size: 48px;
+  }
+
+  .header3 {
+    font-size: 22px;
+  }
+
+  .header4 {
+    font-size: 18px;
+  }
+
+  .blockName {
+    font-size: 16px;
+  }
+
+  .menuBottoms {
+    font-size: 16px;
+  }
+
+  .body {
+    font-size: 16px;
+  }
+}

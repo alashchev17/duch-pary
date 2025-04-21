@@ -1,0 +1,54 @@
+.colorSwatch {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.colorBlock {
+  width: 100px;
+  height: 100px;
+  border-radius: 8px;
+  box-shadow: inset 0px 0px 12px 0px rgba(0, 0, 0, 0.05);
+}
+
+.colorInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.colorName {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.colorValue {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+.colorPalette {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.colorGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.colorGroupTitle {
+  font-family: 'Spectral SC', serif;
+  font-weight: 500;
+  font-size: 20px;
+  letter-spacing: 0.1em;
+  color: #FFFFFF;
+  margin-bottom: 8px;
+}

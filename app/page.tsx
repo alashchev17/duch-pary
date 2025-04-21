@@ -1,3 +1,9 @@
+import { Button } from '@/components/design-system'
+
 export default function Home() {
-  return <div>To be implemented soon :)</div>
+  return (
+    <div>
+      <Button variant="primary">Test button</Button>
+    </div>
+  )
 }

@@ -1,0 +1,121 @@
+/* Container */
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.fullWidth {
+  max-width: none;
+}
+
+/* Flex layouts */
+.flex {
+  display: flex;
+}
+
+.flexColumn {
+  flex-direction: column;
+}
+
+.flexRow {
+  flex-direction: row;
+}
+
+.justifyStart {
+  justify-content: flex-start;
+}
+
+.justifyCenter {
+  justify-content: center;
+}
+
+.justifyEnd {
+  justify-content: flex-end;
+}
+
+.justifyBetween {
+  justify-content: space-between;
+}
+
+.justifyAround {
+  justify-content: space-around;
+}
+
+.alignStart {
+  align-items: flex-start;
+}
+
+.alignCenter {
+  align-items: center;
+}
+
+.alignEnd {
+  align-items: flex-end;
+}
+
+.alignStretch {
+  align-items: stretch;
+}
+
+/* Gaps */
+.gap8 {
+  gap: 8px;
+}
+
+.gap16 {
+  gap: 16px;
+}
+
+.gap24 {
+  gap: 24px;
+}
+
+.gap32 {
+  gap: 32px;
+}
+
+.gap48 {
+  gap: 48px;
+}
+
+/* Grid */
+.grid {
+  display: grid;
+}
+
+.grid2Cols {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.grid3Cols {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.grid4Cols {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/* Media queries for responsive layouts */
+@media (max-width: 1024px) {
+  .grid4Cols {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 16px;
+  }
+  
+  .grid3Cols, .grid4Cols {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .grid2Cols, .grid3Cols, .grid4Cols {
+    grid-template-columns: 1fr;
+  }
+}
