@@ -18,10 +18,8 @@ const portfolioQuery = `*[_type == "portfolio"][0]{
     crop,
     hotspot,
     alt,
-    // Для видео файлов
-    ...((_type == "file") => {
-      "url": asset->url
-    })
+    // Для файлов (видео и изображения)
+    "url": asset->url
   }
 }`
 

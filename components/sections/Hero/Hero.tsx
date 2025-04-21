@@ -1,0 +1,54 @@
+import Link from "next/link";
+
+import HeroVideo from "./HeroVideo";
+import HeroImage from "./HeroImage";
+
+import { Button, Flex, Typography } from "../../design-system";
+import { urlFor } from "@/app/lib/sanity-utils";
+
+import { Hero as HeroData } from "@/app/lib/types";
+
+type HeroProps = {
+  data: HeroData;
+};
+
+export const Hero: React.FC<HeroProps> = ({ data }) => {
+  const { type, alt } = data.backgroundMedia;
+
+  return (
+    <Flex
+      className="py-8 max-h-[calc(100vh-4.5rem)] gap-3 md:gap-6"
+      direction="column"
+    >
+      <Typography
+        variant="header1"
+        className="text-primary text-center md:max-w-[950px] md:mx-auto"
+      >
+        {data.title}
+      </Typography>
+
+      <div className="relative w-full flex-1 min-h-0 rounded-design overflow-hidden">
+        {type === "video" ? (
+          <HeroVideo
+            url={data.backgroundMedia.video.asset.url}
+            className="[&>video]:object-cover max-h-[48%]"
+          />
+        ) : (
+          <HeroImage
+            src={urlFor(data.backgroundMedia.image).url().toString()}
+            alt={alt}
+            className="w-full h-full object-cover rounded-design"
+          />
+        )}
+        <Link
+          href={data.ctaButton.link}
+          className="absolute left-[50%] bottom-[36px] -translate-x-[50%]"
+        >
+          <Button className="uppercase border-transparent md:border-dark-green">
+            {data.ctaButton.text}
+          </Button>
+        </Link>
+      </div>
+    </Flex>
+  );
+};

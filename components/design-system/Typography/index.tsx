@@ -29,11 +29,11 @@ export const Typography: React.FC<TypographyProps> = ({ variant, children, as, c
   const variantClassNames: Record<TypographyVariant, string> = {
     header1: 'font-spectral text-h1-mobile md:text-h1-desktop',
     header2: 'font-nevduplenysh text-h2-mobile md:text-h2-desktop',
-    header3: 'font-spectral text-h3-mobile md:text-h3-desktop',
-    header4: 'font-spectral text-h4-mobile md:text-h4-desktop',
-    blockName: 'font-spectral text-block-name',
-    menuBottoms: 'font-manrope text-menu font-semibold',
-    body: 'font-manrope text-body',
+    header3: 'font-spectral text-h3-mobile md:text-h3-desktop uppercase',
+    header4: 'font-spectral text-h3-mobile md:text-h4-desktop uppercase',
+    blockName: 'font-spectral text-block-name-mobile md:text-block-name-desktop',
+    menuBottoms: 'font-manrope text-menu-mobile md:text-menu-desktop font-semibold uppercase',
+    body: 'font-manrope text-body-mobile md:text-body-desktop',
   }
 
   return <Tag className={`${variantClassNames[variant]} ${uppercase ? 'uppercase' : ''} ${className}`}>{children}</Tag>
