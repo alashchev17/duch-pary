@@ -68,7 +68,7 @@ export const Construction: React.FC<ConstructionProps> = ({ data }) => {
                 >
                   <Typography
                     variant="menuBottoms"
-                    className="font-bold md:text-[32px] text-primary"
+                    className="font-bold md:!text-[32px] text-primary"
                   >
                     {processCount}
                   </Typography>
