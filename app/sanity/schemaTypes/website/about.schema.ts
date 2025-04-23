@@ -1,50 +1,51 @@
-import { defineType, defineField } from 'sanity'
+import { defineType, defineField } from "sanity";
 
 const aboutSchema = defineType({
-  name: 'about',
-  title: 'Про нас',
-  type: 'document',
+  name: "about",
+  title: "Про нас",
+  type: "document",
   fields: [
     defineField({
-      name: 'title',
-      title: 'Заголовок секции',
-      type: 'string',
+      name: "title",
+      title: "Заголовок секции",
+      type: "string",
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: 'description',
-      title: 'Описание',
-      type: 'text',
+      name: "description",
+      title: "Описание",
+      type: "text",
       description: 'Основной текст раздела "Про нас"',
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: 'images',
-      title: 'Изображения галереи',
-      type: 'image',
+      name: "image",
+      title: "Изображение",
+      description: "Изображение для секции",
+      type: "image",
       options: {
         hotspot: true,
       },
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: 'features',
-      title: 'Преимущества',
-      type: 'array',
+      name: "features",
+      title: "Преимущества",
+      type: "array",
       of: [
         {
-          type: 'object',
+          type: "object",
           fields: [
             defineField({
-              name: 'title',
-              title: 'Название преимущества',
-              type: 'string',
+              name: "title",
+              title: "Название преимущества",
+              type: "string",
               validation: (Rule) => Rule.required(),
             }),
             defineField({
-              name: 'description',
-              title: 'Описание преимущества',
-              type: 'text',
+              name: "description",
+              title: "Описание преимущества",
+              type: "text",
             }),
           ],
         },
@@ -53,10 +54,10 @@ const aboutSchema = defineType({
   ],
   preview: {
     select: {
-      title: 'title',
-      media: 'images.0',
+      title: "title",
+      media: "images.0",
     },
   },
-})
+});
 
-export default aboutSchema
+export default aboutSchema;

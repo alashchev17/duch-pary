@@ -20,7 +20,7 @@ export const Slogan: React.FC<SloganProps> = ({ data }) => {
     <Flex
       align="center"
       direction={isMobile ? "column" : "row"}
-      className="gap-3 md:gap-[22px] pt-12 pb-[100px]"
+      className="gap-3 md:gap-[22px] pt-0 md:pt-12 pb-16 md:pb-[100px]"
     >
       <div className="w-full md:max-w-[458px] md:max-h-[452px] text-center px-[16px] md:px-[56px] py-[65.5px] md:py-[94.5px] border-[3px] border-primary rounded-design">
         <Typography variant="header3" className="text-primary">

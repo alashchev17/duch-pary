@@ -75,7 +75,7 @@ export type About = {
   _type: "about";
   title: string;
   description: string;
-  images: SanityImage;
+  image: SanityImage;
   features?: Array<{
     title: string;
     description?: string;

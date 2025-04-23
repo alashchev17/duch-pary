@@ -1,5 +1,5 @@
-import { fetchSanityData } from '../../lib/sanity-utils'
-import { About } from '../../lib/types'
+import { fetchSanityData } from "../../lib/sanity-utils";
+import { About } from "../../lib/types";
 
 /**
  * GROQ запрос для получения данных секции About
@@ -8,7 +8,7 @@ const aboutQuery = `*[_type == "about"][0]{
   _type,
   title,
   description,
-  images{
+  image{
     _type,
     asset->{
       _ref,
@@ -22,12 +22,12 @@ const aboutQuery = `*[_type == "about"][0]{
     title,
     description
   }
-}`
+}`;
 
 /**
  * Получает данные для секции About
  * @returns Данные секции About
  */
 export async function getAbout(): Promise<About> {
-  return fetchSanityData<About>(aboutQuery)
+  return fetchSanityData<About>(aboutQuery);
 }
