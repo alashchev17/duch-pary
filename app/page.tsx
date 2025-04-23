@@ -10,7 +10,7 @@ import { About } from "@/components/sections/About";
 export default async function Home() {
   const { hero, slogan, about } = await getAllPageDataWithSeparateQueries();
   return (
-    <Container fullWidth>
+    <Container>
       <Header />
       <Hero data={hero} />
       <Slogan data={slogan} />

@@ -20,9 +20,9 @@ export const About: React.FC<AboutProps> = ({ data }) => {
       <Flex
         direction={isMobile ? "column" : "row"}
         align="start"
-        className="gap-4"
+        className="gap-4 md:gap-10"
       >
-        <Flex direction="column" className="md:max-w-[50%]">
+        <Flex direction="column" className="md:max-w-[calc(50%-(40px/1.25))]">
           <Typography variant="blockName" className="text-primary mb-6">
             Про нас
           </Typography>
@@ -32,7 +32,7 @@ export const About: React.FC<AboutProps> = ({ data }) => {
           <Typography variant="body">{description}</Typography>
         </Flex>
         <Image
-          className="md:max-w-[50%] w-full h-[333px] object-cover rounded-design"
+          className="w-full h-[333px] object-cover rounded-design"
           src={urlFor(image).url().toString()}
           alt="Photo: About section photo"
           width={0}
