@@ -1,11 +1,11 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode, useMemo } from "react";
 
 interface FlexProps {
   children: ReactNode;
-  direction?: "row" | "column";
+  direction?: "row" | "column" | "row-reverse" | "column-reverse";
   justify?: "start" | "center" | "end" | "between" | "around";
   align?: "start" | "center" | "end" | "stretch";
-  gap?: 2 | 4 | 8 | 12 | 16 | 24 | 32 | 48;
+  gap?: 2 | 4 | 5 | 6 | 8 | 10 | 12 | 16 | 24 | 32 | 48;
   className?: string;
   style?: React.CSSProperties;
 }
@@ -14,7 +14,10 @@ interface FlexProps {
 const gapClasses: Record<number, string> = {
   2: "gap-2",
   4: "gap-4",
+  5: "gap-5",
+  6: "gap-6",
   8: "gap-8",
+  10: "gap-10",
   12: "gap-12",
   16: "gap-16",
   24: "gap-24",
@@ -32,7 +35,12 @@ export const Flex: React.FC<FlexProps> = ({
   style,
 }) => {
   // Map props to Tailwind class names
-  const directionClass = direction === "column" ? "flex-col" : "flex-row";
+  const directionClass = useMemo(() => {
+    if (direction === "row") return "flex-row";
+    if (direction === "column") return "flex-col";
+    if (direction === "row-reverse") return "flex-row-reverse";
+    if (direction === "column-reverse") return "flex-col-reverse";
+  }, [direction]);
 
   const justifyClasses = {
     start: "justify-start",

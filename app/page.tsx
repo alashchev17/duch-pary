@@ -6,15 +6,18 @@ import { Slogan } from "@/components/sections/Slogan";
 
 import { getAllPageDataWithSeparateQueries } from "@/app/api";
 import { About } from "@/components/sections/About";
+import { Construction } from "@/components/sections/Construction";
 
 export default async function Home() {
-  const { hero, slogan, about } = await getAllPageDataWithSeparateQueries();
+  const { hero, slogan, about, construction } =
+    await getAllPageDataWithSeparateQueries();
   return (
     <Container>
       <Header />
       <Hero data={hero} />
       <Slogan data={slogan} />
       <About data={about} />
+      <Construction data={construction} />
     </Container>
   );
 }

@@ -92,7 +92,7 @@ export type Construction = {
   process: Array<{
     title: string;
     description: string;
-    image?: SanityImage;
+    backgroundMedia?: BackgroundMedia;
   }>;
 };
 

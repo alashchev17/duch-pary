@@ -2,11 +2,13 @@ import { useEffect, useState } from "react";
 
 export function useIsMobile() {
   const [isMobile, setIsMobile] = useState(false);
+  const [isLarge, setIsLarge] = useState(false);
 
   // Handle window resize to detect mobile view
   useEffect(() => {
     const checkIfMobile = () => {
-      setIsMobile(window.innerWidth < 768);
+      setIsMobile(window.innerWidth <= 768);
+      setIsLarge(window.innerWidth < 1024);
     };
 
     // Initial check
@@ -21,5 +23,5 @@ export function useIsMobile() {
     };
   }, []);
 
-  return { isMobile };
+  return { isMobile, isLarge };
 }

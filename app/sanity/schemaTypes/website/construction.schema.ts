@@ -1,49 +1,81 @@
-import { defineType, defineField } from 'sanity'
+import { defineType, defineField } from "sanity";
 
 const constructionSchema = defineType({
-  name: 'construction',
-  title: 'Строительство',
-  type: 'document',
+  name: "construction",
+  title: "Строительство",
+  type: "document",
   fields: [
     defineField({
-      name: 'title',
-      title: 'Заголовок секции',
-      type: 'string',
+      name: "title",
+      title: "Заголовок секции",
+      type: "string",
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: 'description',
-      title: 'Описание',
-      type: 'text',
+      name: "description",
+      title: "Описание",
+      type: "text",
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: 'process',
-      title: 'Процесс строительства',
-      type: 'array',
+      name: "process",
+      title: "Процесс строительства",
+      type: "array",
       of: [
         {
-          type: 'object',
+          type: "object",
           fields: [
             defineField({
-              name: 'title',
-              title: 'Название этапа',
-              type: 'string',
+              name: "title",
+              title: "Название этапа",
+              type: "string",
               validation: (Rule) => Rule.required(),
             }),
             defineField({
-              name: 'description',
-              title: 'Описание этапа',
-              type: 'text',
+              name: "description",
+              title: "Описание этапа",
+              type: "text",
               validation: (Rule) => Rule.required(),
             }),
             defineField({
-              name: 'image',
-              title: 'Изображение этапа',
-              type: 'image',
-              options: {
-                hotspot: true,
-              },
+              name: "backgroundMedia",
+              title: "Фоновое изображение или видео этапа",
+              type: "object",
+              fields: [
+                {
+                  name: "type",
+                  title: "Тип медиа",
+                  type: "string",
+                  options: {
+                    list: [
+                      { title: "Изображение", value: "image" },
+                      { title: "Видео", value: "video" },
+                    ],
+                    layout: "radio",
+                  },
+                  validation: (Rule) => Rule.required(),
+                },
+                {
+                  name: "image",
+                  title: "Изображение",
+                  type: "image",
+                  options: { hotspot: true },
+                  hidden: ({ parent }) => parent?.type !== "image",
+                },
+                {
+                  name: "video",
+                  title: "Видео",
+                  type: "file",
+                  options: { accept: "video/*" },
+                  hidden: ({ parent }) => parent?.type !== "video",
+                },
+                {
+                  name: "alt",
+                  title: "Альтернативный текст",
+                  type: "string",
+                },
+              ],
+              validation: (Rule) => Rule.required(),
             }),
           ],
         },
@@ -53,10 +85,10 @@ const constructionSchema = defineType({
   ],
   preview: {
     select: {
-      title: 'title',
-      media: 'images.0',
+      title: "title",
+      media: "images.0",
     },
   },
-})
+});
 
-export default constructionSchema
+export default constructionSchema;

@@ -23,7 +23,10 @@ export const About: React.FC<AboutProps> = ({ data }) => {
         className="gap-4 md:gap-10"
       >
         <Flex direction="column" className="md:max-w-[calc(50%-(40px/1.25))]">
-          <Typography variant="blockName" className="text-primary mb-6">
+          <Typography
+            variant="blockName"
+            className="text-primary mb-6 uppercase"
+          >
             Про нас
           </Typography>
           <Typography variant="header2" className="mb-2">

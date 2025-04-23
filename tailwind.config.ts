@@ -6,6 +6,9 @@ const config: import("tailwindcss").Config = {
   ],
   theme: {
     extend: {
+      screens: {
+        xs: "470px",
+      },
       colors: {
         // Custom brand colors
         brand: {

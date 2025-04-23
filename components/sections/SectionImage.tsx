@@ -17,7 +17,7 @@ export const SectionImage: React.FC<SectionImageProps> = ({
     width={0}
     height={0}
     sizes="100vh"
-    alt={alt ?? ""}
     className={className}
+    alt={alt ?? ""}
   />
 );
