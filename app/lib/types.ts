@@ -152,7 +152,7 @@ export type Training = {
   programs: Array<{
     title: string;
     description: string;
-    image?: SanityImage;
+    image: SanityImage;
   }>;
 };
 

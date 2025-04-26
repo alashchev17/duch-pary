@@ -9,10 +9,18 @@ import { About } from "@/components/sections/About";
 import { Construction } from "@/components/sections/Construction";
 import { Portfolio } from "@/components/sections/Portfolio";
 import { Accessories } from "@/components/sections/Accessories";
+import { Training } from "@/components/sections/Training";
 
 export default async function Home() {
-  const { hero, slogan, about, construction, portfolio, accessories } =
-    await getAllPageDataWithSeparateQueries();
+  const {
+    hero,
+    slogan,
+    about,
+    construction,
+    portfolio,
+    accessories,
+    training,
+  } = await getAllPageDataWithSeparateQueries();
   return (
     <>
       <Container>
@@ -25,6 +33,7 @@ export default async function Home() {
       <Portfolio data={portfolio} />
       <Container>
         <Accessories data={accessories} />
+        <Training data={training} />
       </Container>
     </>
   );
