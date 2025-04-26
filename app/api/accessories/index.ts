@@ -9,19 +9,17 @@ const accessoriesQuery = `*[_type == "accessories"][0]{
   title,
   description,
   slogan,
-  cards[]{
-    image{
-      _type,
-      asset->{
-        _ref,
-        url
-      },
-      crop,
-      hotspot,
-      alt
+  cardImages[]{
+    _type,
+    asset->{
+      _ref,
+      url
     },
-    title
-  }
+    crop,
+    hotspot,
+    alt
+  },
+  perks
 }`
 
 /**

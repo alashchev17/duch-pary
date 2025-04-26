@@ -13,7 +13,7 @@ export const Container: React.FC<ContainerProps> = ({
 }) => {
   return (
     <div
-      className={`w-full ${fullWidth ? "" : "max-w-[1512px]"} mx-auto px-4 md:px-6 ${className}`}
+      className={`w-full ${fullWidth ? "" : "max-w-[1512px]"} mx-auto px-4 md:px-6 overflow-x-hidden ${className}`}
     >
       {children}
     </div>

@@ -8,9 +8,10 @@ import { getAllPageDataWithSeparateQueries } from "@/app/api";
 import { About } from "@/components/sections/About";
 import { Construction } from "@/components/sections/Construction";
 import { Portfolio } from "@/components/sections/Portfolio";
+import { Accessories } from "@/components/sections/Accessories";
 
 export default async function Home() {
-  const { hero, slogan, about, construction, portfolio } =
+  const { hero, slogan, about, construction, portfolio, accessories } =
     await getAllPageDataWithSeparateQueries();
   return (
     <>
@@ -22,7 +23,9 @@ export default async function Home() {
         <Construction data={construction} />
       </Container>
       <Portfolio data={portfolio} />
-      {/* <Container>test</Container> */}
+      <Container>
+        <Accessories data={accessories} />
+      </Container>
     </>
   );
 }

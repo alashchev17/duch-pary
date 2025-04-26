@@ -5,6 +5,7 @@ export type SanityImage = {
   _type: "image";
   asset: {
     _ref: string;
+    url: string;
     _type: "reference";
   };
   crop?: {
@@ -131,10 +132,13 @@ export type Accessories = {
   title: string;
   description: string;
   slogan?: string;
-  cards: Array<{
-    image: SanityImage;
-    title: string;
-  }>;
+  cardImages: Array<SanityImage>;
+  perks?: {
+    visible: boolean;
+    first: string;
+    second: string;
+    third: string;
+  };
 };
 
 /**
