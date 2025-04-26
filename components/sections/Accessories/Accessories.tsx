@@ -38,21 +38,24 @@ export const Accessories: React.FC<AccessoriesProps> = ({ data }) => {
       </Flex>
       {perks && perks.visible && (
         <Flex className="gap-2 md:gap-4 flex-col md:flex-row items-center justify-between w-full mt-9">
-          {Object.entries(perks).map(([perk, value]) => {
-            if (perk === "visible") return null;
-            return (
-              <div
-                key={value as string}
-                className="w-full md:w-[33%] flex items-center justify-center bg-non-accent-1 h-[60px] md:h-[85px] rounded-design"
-              >
-                <Typography
-                  variant="body"
-                  className="text-center uppercase max-w-[165px]"
+          {["first", "second", "third"].map((perk) => {
+            const typedPerk = perk as keyof AccessoriesData["perks"];
+            if (perks[typedPerk]) {
+              return (
+                <div
+                  key={typedPerk}
+                  className="w-full md:w-[33%] flex items-center justify-center bg-non-accent-1 h-[60px] md:h-[85px] rounded-design"
                 >
-                  {value}
-                </Typography>
-              </div>
-            );
+                  <Typography
+                    variant="body"
+                    className="text-center uppercase max-w-[165px]"
+                  >
+                    {perks[typedPerk]}
+                  </Typography>
+                </div>
+              );
+            }
+            return null;
           })}
         </Flex>
       )}
