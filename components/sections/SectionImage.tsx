@@ -5,12 +5,14 @@ type SectionImageProps = {
   src: string;
   alt?: string;
   className?: string;
+  style?: React.CSSProperties;
 };
 
 export const SectionImage: React.FC<SectionImageProps> = ({
   src,
   alt,
   className,
+  style,
 }) => (
   <Image
     src={src}
@@ -19,5 +21,6 @@ export const SectionImage: React.FC<SectionImageProps> = ({
     sizes="100vh"
     className={className}
     alt={alt ?? ""}
+    style={style}
   />
 );

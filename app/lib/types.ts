@@ -99,13 +99,28 @@ export type Construction = {
 /**
  * Типы для секции Portfolio
  */
-export type PortfolioMediaItem = SanityImage | SanityFileAsset;
+
+export type PortfolioMedia =
+  | {
+      type: "image";
+      image: {
+        url: string;
+      };
+      alt?: string;
+    }
+  | {
+      type: "video";
+      video: {
+        url: string;
+      };
+      alt?: string;
+    };
 
 export type Portfolio = {
   _type: "portfolio";
   title: string;
   description?: string;
-  mediaItems: PortfolioMediaItem[];
+  mediaItems: PortfolioMedia[];
 };
 
 /**
