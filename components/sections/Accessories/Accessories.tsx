@@ -30,7 +30,7 @@ export const Accessories: React.FC<AccessoriesProps> = ({ data }) => {
       <Flex className="w-full flex-1 md:flex-[unset] max-h-[290px] md:max-h-[unset] md:h-[485px] gap-2 md:gap-4 overflow-y-hidden overflow-x-auto pb-4">
         {cardImages.map((image) => (
           <SectionImage
-            className="max-h-[270px] md:max-h-[unset] md:aspect-[0.86] min-w-[calc(100vw-40px)] md:min-w-[unset] h-full object-cover rounded-design"
+            className="max-h-[270px] md:max-h-[unset] md:aspect-[0.86] min-w-[calc(100vw-32px)] md:min-w-[unset] md:w-full h-full object-cover rounded-design"
             key={image.asset.url}
             src={urlFor(image).url().toString()}
           />
