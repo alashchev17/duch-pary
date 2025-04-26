@@ -152,7 +152,7 @@ export const Header: React.FC = () => {
                 <Link href="#contact">
                   <Button
                     variant="primary"
-                    className="absolute bottom-[24px] left-[20px] right-[20px] text-dark-green uppercase"
+                    className="absolute bottom-[24px] left-[20px] right-[20px] text-brand-bg uppercase"
                   >
                     Связаться
                   </Button>
