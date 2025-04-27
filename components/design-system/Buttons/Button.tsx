@@ -34,7 +34,7 @@ export const Button: React.FC<ButtonProps> = ({
 
   // Size-specific classes
   const size =
-    "text-menu-mobile md:text-menu-desktop py-[18px] px-[28px] rounded-[20px]";
+    "text-menu-mobile md:text-menu-desktop px-[20px] py-[20px] md:py-[18px] md:px-[28px] rounded-[20px]";
 
   // Additional conditional classes
   const widthClass = fullWidth ? "w-full" : "";

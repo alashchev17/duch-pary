@@ -1,0 +1,59 @@
+.checkboxContainer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+}
+
+.checkboxWrapper {
+  position: relative;
+  width: 27px;
+  height: 27px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.checkboxInput {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.checkboxCustom {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 27px;
+  height: 27px;
+  border: 2px solid var(--color-brand-bg);
+  border-radius: 8px;
+  background-color: transparent;
+  transition: all 0.2s ease;
+}
+
+.checkboxInput:checked + .checkboxCustom {
+  background-color: #958f60;
+  border-color: #958f60;
+}
+
+.checkboxInput:focus + .checkboxCustom {
+  box-shadow: 0 0 0 2px rgba(149, 143, 96, 0.25);
+}
+
+.checkboxTick {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.2s ease;
+  color: #ffffff;
+}
+
+.checkboxInput:checked ~ .checkboxTick {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.checkboxLabel {
+  user-select: none;
+}

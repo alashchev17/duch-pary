@@ -162,32 +162,8 @@ export type Training = {
 export type Contact = {
   _type: "contact";
   title: string;
-  description?: string;
-  email: string;
-  phone?: string;
-  address?: string;
-  socialMedia?: Array<{
-    platform:
-      | "facebook"
-      | "instagram"
-      | "twitter"
-      | "youtube"
-      | "tiktok"
-      | "linkedin"
-      | "other";
-    url: string;
-    icon?: SanityImage;
-  }>;
-  mapLocation?: {
-    latitude?: number;
-    longitude?: number;
-    zoom?: number;
-  };
-  contactImage?: SanityImage;
-  workingHours?: Array<{
-    days: string;
-    hours: string;
-  }>;
+  description: string;
+  contactImage: SanityImage;
 };
 
 /**

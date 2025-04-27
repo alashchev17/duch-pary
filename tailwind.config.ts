@@ -1,4 +1,7 @@
-const config: import("tailwindcss").Config = {
+import type { Config } from "tailwindcss";
+import plugin from "tailwindcss/plugin";
+
+const config: Config = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -137,6 +140,44 @@ const config: import("tailwindcss").Config = {
       },
     },
   },
+  plugins: [
+    plugin(({ addBase, theme }) => {
+      // Define a type for the color values
+      type ColorValue = string | Record<string, unknown>;
+
+      // Helper function to flatten color objects
+      function flattenColors(
+        obj: Record<string, ColorValue>,
+        prefix = "",
+      ): Record<string, string> {
+        return Object.entries(obj).reduce(
+          (acc: Record<string, string>, [key, value]) => {
+            const newKey = prefix ? `${prefix}-${key}` : key;
+
+            if (typeof value === "string") {
+              acc[`--color-${newKey}`] = value;
+            } else if (typeof value === "object" && value !== null) {
+              Object.assign(
+                acc,
+                flattenColors(value as Record<string, ColorValue>, newKey),
+              );
+            }
+
+            return acc;
+          },
+          {},
+        );
+      }
+
+      // Get colors from theme
+      const colors = theme("colors") as Record<string, ColorValue>;
+      const colorVariables = flattenColors(colors);
+
+      addBase({
+        ":root": colorVariables,
+      });
+    }),
+  ],
 };
 
 export default config;

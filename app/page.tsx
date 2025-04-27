@@ -10,6 +10,7 @@ import { Construction } from "@/components/sections/Construction";
 import { Portfolio } from "@/components/sections/Portfolio";
 import { Accessories } from "@/components/sections/Accessories";
 import { Training } from "@/components/sections/Training";
+import { Contact } from "@/components/sections/Contact";
 
 export default async function Home() {
   const {
@@ -20,6 +21,8 @@ export default async function Home() {
     portfolio,
     accessories,
     training,
+    contact,
+    // settings,
   } = await getAllPageDataWithSeparateQueries();
   return (
     <>
@@ -35,6 +38,8 @@ export default async function Home() {
         <Accessories data={accessories} />
         <Training data={training} />
       </Container>
+      <Contact data={contact} />
+      {/* <Footer data={settings} /> */}
     </>
   );
 }

@@ -1,0 +1,55 @@
+.baseInput {
+  display: inline-block;
+  width: 100%;
+  background: transparent;
+  color: #ffffff;
+  padding: 24px;
+  font-family: var(--font-manrope);
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px;
+  border-bottom: 3px solid #827d53;
+  outline: none;
+}
+
+.baseInput::placeholder {
+  color: #ffffff;
+}
+
+.baseInput:focus {
+  color: var(--color-brand-bg);
+  border-color: var(--color-brand-bg);
+}
+.baseInput:focus::placeholder {
+  color: var(--color-brand-bg);
+}
+
+.baseTextArea {
+  min-height: calc(
+    18px * 8 + 48px
+  ); /* 4 lines of text (line-height) + padding */
+  resize: none;
+  line-height: 24px;
+}
+
+.error {
+  color: #931915 !important;
+  border-color: #931915 !important;
+}
+
+.error::placeholder,
+.error:focus::placeholder {
+  color: #931915;
+}
+
+@media screen and (max-width: 768px) {
+  .baseInput {
+    font-size: 14px;
+    line-height: 125%;
+    padding: 16px;
+  }
+  .baseTextArea {
+    min-height: calc(18px * 4 + 48px);
+  }
+}
