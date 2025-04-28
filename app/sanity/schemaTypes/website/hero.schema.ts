@@ -14,12 +14,6 @@ const heroSchema = defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: "subtitle",
-      title: "Подзаголовок",
-      type: "text",
-      description: "Дополнительный текст под заголовком (необязательно)",
-    }),
-    defineField({
       name: "backgroundMedia",
       title: "Фоновое изображение или видео",
       type: "object",

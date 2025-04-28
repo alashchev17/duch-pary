@@ -52,7 +52,6 @@ export type SanityFileAsset = {
 export type Hero = {
   _type: "hero";
   title: string;
-  subtitle?: string;
   backgroundMedia: BackgroundMedia;
   ctaButton: {
     text: string;
