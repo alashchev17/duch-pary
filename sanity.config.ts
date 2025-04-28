@@ -1,23 +1,23 @@
-'use client'
+"use client";
 
 /**
  * This configuration is used to for the Sanity Studio that’s mounted on the `\src\app\dashboard\[[...tool]]\page.tsx` route
  */
 
-import { visionTool } from '@sanity/vision'
-import { defineConfig } from 'sanity'
-import { structureTool } from 'sanity/structure'
+import { visionTool } from "@sanity/vision";
+import { defineConfig } from "sanity";
+import { structureTool } from "sanity/structure";
 
 // Go to https://www.sanity.io/docs/api-versioning to learn how API versioning works
-import { apiVersion, dataset, projectId } from '@/app/sanity/env'
-import { schema } from '@/app/sanity/schemaTypes'
-import { structure } from '@/app/sanity/structure'
+import { apiVersion, dataset, projectId } from "@/app/sanity/env";
+import { schema } from "@/app/sanity/schemaTypes";
+import { structure } from "@/app/sanity/structure";
 
 export default defineConfig({
-  basePath: '/dashboard',
+  basePath: "/dashboard",
   projectId,
   dataset,
-  title: 'Duch Pary Website',
+  title: "Steam Spirit Website",
   // Add and edit the content schema in the './sanity/schemaTypes' folder
   schema,
   plugins: [
@@ -26,4 +26,4 @@ export default defineConfig({
     // https://www.sanity.io/docs/the-vision-plugin
     visionTool({ defaultApiVersion: apiVersion }),
   ],
-})
+});
