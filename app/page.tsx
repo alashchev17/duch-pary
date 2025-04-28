@@ -1,5 +1,5 @@
 import { Container } from "@/components/design-system";
-import { Header } from "@/components/design-system/Layout/Header";
+import { Header, Footer } from "@/components/design-system/Layout";
 
 import { Hero } from "@/components/sections/Hero";
 import { Slogan } from "@/components/sections/Slogan";
@@ -22,12 +22,12 @@ export default async function Home() {
     accessories,
     training,
     contact,
-    // settings,
+    settings,
   } = await getAllPageDataWithSeparateQueries();
   return (
     <>
       <Container>
-        <Header />
+        <Header externalLogo={settings.logoHeader} />
         <Hero data={hero} />
         <Slogan data={slogan} />
         <About data={about} />
@@ -39,7 +39,7 @@ export default async function Home() {
         <Training data={training} />
       </Container>
       <Contact data={contact} />
-      {/* <Footer data={settings} /> */}
+      <Footer data={settings} />
     </>
   );
 }

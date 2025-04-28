@@ -172,23 +172,16 @@ export type Contact = {
 export type Settings = {
   _type: "settings";
   siteName: string;
-  logo?: SanityImage;
+  email: string;
+  phone: string;
   favicon?: SanityImage;
+  logoHeader?: SanityImage;
+  logoFooter?: SanityImage;
   siteDescription?: string;
-  defaultSocialImage?: SanityImage;
-  headerNav?: Array<{
-    title: string;
+  socialMedia?: Array<{
+    platform: string;
     url: string;
-  }>;
-  footerNav?: Array<{
-    title: string;
-    url: string;
-  }>;
-  footerText?: string;
-  googleAnalyticsId?: string;
-  metaTags?: Array<{
-    name: string;
-    content: string;
+    icon?: SanityImage;
   }>;
 };
 

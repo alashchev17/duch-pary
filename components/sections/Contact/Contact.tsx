@@ -22,7 +22,7 @@ export const Contact: React.FC<ContactProps> = ({ data }) => {
     <div className="bg-white text-black py-8 md:py-16">
       <Container>
         <Flex className="gap-4 lg:gap-6 items-stretch lg:flex-row flex-col">
-          <Flex className="relative w-full lg:w-1/2 h-full rounded-design overflow-hidden">
+          <Flex className="relative w-full lg:w-1/2 h-[inherit] rounded-design overflow-hidden">
             <Image
               src={urlFor(contactImage).url()}
               alt={`Фото: ${title}`}

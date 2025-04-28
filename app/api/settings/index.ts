@@ -1,5 +1,5 @@
-import { fetchSanityData } from '../../lib/sanity-utils'
-import { Settings } from '../../lib/types'
+import { fetchSanityData } from "../../lib/sanity-utils";
+import { Settings } from "../../lib/types";
 
 /**
  * GROQ запрос для получения данных секции Settings
@@ -7,25 +7,19 @@ import { Settings } from '../../lib/types'
 const settingsQuery = `*[_type == "settings"][0]{
   _type,
   siteName,
-  logo{
-    _type,
-    asset->{
-      _ref,
-      url
-    },
-    crop,
-    hotspot,
-    alt
-  },
+  email,
+  phone,
   favicon{
     _type,
     asset->{
       _ref,
       url
-    }
+    },
+    crop,
+    hotspot,
+    alt
   },
-  siteDescription,
-  defaultSocialImage{
+  logoHeader{
     _type,
     asset->{
       _ref,
@@ -35,26 +29,37 @@ const settingsQuery = `*[_type == "settings"][0]{
     hotspot,
     alt
   },
-  headerNav[]{
-    title,
-    url
+  logoFooter{
+    _type,
+    asset->{
+      _ref,
+      url
+    },
+    crop,
+    hotspot,
+    alt
   },
-  footerNav[]{
-    title,
-    url
-  },
-  footerText,
-  googleAnalyticsId,
-  metaTags[]{
-    name,
-    content
+  siteDescription,
+  socialMedia[]{
+    platform,
+    url,
+    icon{
+      _type,
+      asset->{
+        _ref,
+        url
+      },
+      crop,
+      hotspot,
+      alt
+    }
   }
-}`
+}`;
 
 /**
  * Получает данные настроек сайта
  * @returns Данные настроек сайта
  */
 export async function getSettings(): Promise<Settings> {
-  return fetchSanityData<Settings>(settingsQuery)
+  return fetchSanityData<Settings>(settingsQuery);
 }

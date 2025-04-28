@@ -1,8 +1,36 @@
-import { SVGProps } from 'react'
+import { urlFor } from "@/app/lib/sanity-utils";
+import { Settings } from "@/app/lib/types";
+import Image from "next/image";
+import { SVGProps } from "react";
 
-export const Logo: React.FC<SVGProps<SVGSVGElement>> = (props) => {
+export type LogoProps = SVGProps<SVGSVGElement> & {
+  externalLogo?: Settings["logoHeader"];
+};
+
+export const Logo: React.FC<LogoProps> = ({ externalLogo, ...props }) => {
+  if (externalLogo) {
+    console.log(externalLogo);
+    return (
+      <Image
+        src={urlFor(externalLogo).url()}
+        width={204}
+        height={39}
+        sizes="100vw"
+        alt="Icon: Logo"
+        className={props.className}
+      />
+    );
+  }
+
   return (
-    <svg width="204" height="39" viewBox="0 0 204 39" xmlns="http://www.w3.org/2000/svg" fill="#958F60" {...props}>
+    <svg
+      width="204"
+      height="39"
+      viewBox="0 0 204 39"
+      xmlns="http://www.w3.org/2000/svg"
+      fill="#958F60"
+      {...props}
+    >
       <path d="M15.8752 32.6817C15.8752 35.721 12.4674 38.1783 8.3288 38.1783C4.19023 38.1783 0.853516 35.721 0.853516 32.6817V25.103H5.20548V32.6817C5.20548 33.9621 6.58284 35.0291 8.3288 35.0291C10.0748 35.0291 11.5233 33.9621 11.5233 32.6817V23.2859C11.5233 22.0055 10.1459 20.9386 8.39993 20.9386C4.26137 20.9386 0.853516 18.4813 0.853516 15.442V6.31778C0.853516 3.27852 4.26137 0.821243 8.3288 0.821243C12.3962 0.821243 15.8752 3.27852 15.8752 6.31778V13.8965H11.5233V6.31778C11.5233 5.03741 10.1459 3.97043 8.3288 3.97043C6.51171 3.97043 5.20548 5.03741 5.20548 6.31778V15.442C5.20548 16.7224 6.58284 17.7894 8.39993 17.7894C12.4609 17.7894 15.8752 20.2466 15.8752 23.2859V32.6817Z" />
       <path d="M28.6456 4.1256L28.7168 38.1782H24.2937L24.2226 4.07387L17.4715 4.1256L17.4004 0.872936L35.4678 0.821213L35.5389 4.07387L28.6456 4.1256Z" />
       <path d="M42.9376 21.1002V34.9256L49.6886 34.8739L49.7597 38.1847H38.5145L38.4434 0.827682H49.6886L49.7597 4.08034L42.8665 4.13207L42.9376 17.8475H49.6886L49.7597 21.1002H42.9376Z" />
@@ -15,5 +43,5 @@ export const Logo: React.FC<SVGProps<SVGSVGElement>> = (props) => {
       <path d="M176.957 38.1782V0.821213H181.38V38.1782H176.957Z" />
       <path d="M196.259 4.1256L196.33 38.1782H191.907L191.836 4.07387L185.085 4.1256L185.014 0.872936L203.081 0.821213L203.152 4.07387L196.259 4.1256Z" />
     </svg>
-  )
-}
+  );
+};

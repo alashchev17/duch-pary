@@ -5,27 +5,8 @@ import Link from "next/link";
 import Flex from "./Flex";
 import { Button } from "../Buttons";
 import { useIsMobile } from "@/hooks/useIsMobile";
-
-const leftLinks = [
-  {
-    label: "Про нас",
-    href: "#about",
-  },
-  {
-    label: "Строительство",
-    href: "#construction",
-  },
-];
-const rightLinks = [
-  {
-    label: "Аксессуары",
-    href: "#accessories",
-  },
-  {
-    label: "Обучение",
-    href: "#training",
-  },
-];
+import { Settings } from "@/app/lib/types";
+import { leftLinks, rightLinks } from "./consts";
 
 // Combine all links for mobile menu
 const allLinks = [...leftLinks, ...rightLinks];
@@ -54,7 +35,11 @@ const BurgerIcon: React.FC<{ open: boolean; onClick: () => void }> = ({
   );
 };
 
-export const Header: React.FC = () => {
+export type HeaderProps = {
+  externalLogo?: Settings["logoHeader"];
+};
+
+export const Header: React.FC<HeaderProps> = ({ externalLogo }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { isMobile } = useIsMobile();
 
@@ -110,7 +95,10 @@ export const Header: React.FC = () => {
             ))}
           </Flex>
 
-          <Logo className="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2" />
+          <Logo
+            externalLogo={externalLogo}
+            className="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2"
+          />
 
           <Flex className="gap-[36px]">
             {rightLinks.map((link) => (
@@ -127,6 +115,7 @@ export const Header: React.FC = () => {
         <Flex align="center" justify="between" className="relative">
           {/* Logo centered for mobile */}
           <Logo
+            externalLogo={externalLogo}
             className={`h-8 w-auto max-w-[110px] z-20 ${isMenuOpen ? "[&>path]:fill-dark-green" : ""}`}
           />
 

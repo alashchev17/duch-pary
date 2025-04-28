@@ -1,123 +1,98 @@
-import { defineType, defineField } from 'sanity'
+import { defineType, defineField } from "sanity";
 
 const settingsSchema = defineType({
-  name: 'settings',
-  title: 'Общие настройки',
-  type: 'document',
+  name: "settings",
+  title: "Общие настройки",
+  type: "document",
   fields: [
     defineField({
-      name: 'siteName',
-      title: 'Название сайта',
-      type: 'string',
+      name: "siteName",
+      title: "Название сайта",
+      type: "string",
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: 'logo',
-      title: 'Логотип сайта',
-      type: 'image',
+      name: "favicon",
+      title: "Миниатюрный логотип сайта",
+      description:
+        "Логотип, который будет использован в качестве иконки вкладки в браузере",
+      type: "image",
       options: {
         hotspot: true,
+        accept: "image/svg+xml,image/*", // Accept SVGs and other image formats
       },
     }),
     defineField({
-      name: 'favicon',
-      title: 'Иконка сайта (Favicon)',
-      type: 'image',
+      name: "email",
+      title: "Контактный Email",
+      type: "email",
     }),
     defineField({
-      name: 'siteDescription',
-      title: 'Описание сайта',
-      type: 'text',
-      description: 'Используется для SEO и соц. сетей',
+      name: "phone",
+      title: "Контактный номер телефона",
+      type: "string",
     }),
     defineField({
-      name: 'defaultSocialImage',
-      title: 'Изображение для соц. сетей',
-      type: 'image',
-      description: 'Изображение по умолчанию для соц. сетей',
+      name: "logoHeader",
+      title: "Логотип сайта в шапке",
+      type: "image",
       options: {
         hotspot: true,
+        accept: "image/svg+xml,image/*", // Accept SVGs and other image formats
       },
     }),
     defineField({
-      name: 'headerNav',
-      title: 'Навигация в шапке',
-      type: 'array',
+      name: "logoFooter",
+      title: "Полноразмерный логотип сайта",
+      type: "image",
+      options: {
+        hotspot: true,
+        accept: "image/svg+xml,image/*", // Accept SVGs and other image formats
+      },
+    }),
+    defineField({
+      name: "siteDescription",
+      title: "Описание сайта",
+      type: "text",
+      description: "Используется для SEO и соц. сетей",
+    }),
+    defineField({
+      name: "socialMedia",
+      title: "Социальные сети",
+      type: "array",
       of: [
         {
-          type: 'object',
+          type: "object",
           fields: [
             defineField({
-              name: 'title',
-              title: 'Текст ссылки',
-              type: 'string',
+              name: "platform",
+              title: "Платформа",
+              type: "string",
+              options: {
+                list: [
+                  { title: "Facebook", value: "facebook" },
+                  { title: "Instagram", value: "instagram" },
+                  { title: "Twitter", value: "twitter" },
+                  { title: "YouTube", value: "youtube" },
+                  // { title: "TikTok", value: "tiktok" },
+                  { title: "LinkedIn", value: "linkedin" },
+                  { title: "Другое", value: "other" },
+                ],
+              },
               validation: (Rule) => Rule.required(),
             }),
             defineField({
-              name: 'url',
-              title: 'URL',
-              type: 'string',
-              description: 'Может быть внутренней ссылкой (например, "#about") или внешним URL',
-              validation: (Rule) => Rule.required(),
-            }),
-          ],
-        },
-      ],
-    }),
-    defineField({
-      name: 'footerNav',
-      title: 'Навигация в подвале',
-      type: 'array',
-      of: [
-        {
-          type: 'object',
-          fields: [
-            defineField({
-              name: 'title',
-              title: 'Текст ссылки',
-              type: 'string',
+              name: "url",
+              title: "URL",
+              type: "url",
               validation: (Rule) => Rule.required(),
             }),
             defineField({
-              name: 'url',
-              title: 'URL',
-              type: 'string',
-              validation: (Rule) => Rule.required(),
-            }),
-          ],
-        },
-      ],
-    }),
-    defineField({
-      name: 'footerText',
-      title: 'Текст в подвале',
-      type: 'text',
-      description: 'Копирайт или дополнительная информация в подвале',
-    }),
-    defineField({
-      name: 'googleAnalyticsId',
-      title: 'ID Google Analytics',
-      type: 'string',
-    }),
-    defineField({
-      name: 'metaTags',
-      title: 'Дополнительные мета-теги',
-      type: 'array',
-      of: [
-        {
-          type: 'object',
-          fields: [
-            defineField({
-              name: 'name',
-              title: 'Имя/свойство мета-тега',
-              type: 'string',
-              validation: (Rule) => Rule.required(),
-            }),
-            defineField({
-              name: 'content',
-              title: 'Содержимое мета-тега',
-              type: 'string',
-              validation: (Rule) => Rule.required(),
+              name: "icon",
+              title: "Своя иконка",
+              type: "image",
+              description: "Опциональная иконка для этой социальной сети",
+              hidden: ({ parent }) => parent?.platform !== "other",
             }),
           ],
         },
@@ -126,10 +101,10 @@ const settingsSchema = defineType({
   ],
   preview: {
     select: {
-      title: 'siteName',
-      media: 'logo',
+      title: "siteName",
+      media: "logo",
     },
   },
-})
+});
 
-export default settingsSchema
+export default settingsSchema;
