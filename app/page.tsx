@@ -12,6 +12,9 @@ import { Accessories } from "@/components/sections/Accessories";
 import { Training } from "@/components/sections/Training";
 import { Contact } from "@/components/sections/Contact";
 
+export const revalidate = 60;
+export const dynamic = "force-dynamic";
+
 export default async function Home() {
   const {
     hero,
