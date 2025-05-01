@@ -9,7 +9,6 @@ export type LogoProps = SVGProps<SVGSVGElement> & {
 
 export const Logo: React.FC<LogoProps> = ({ externalLogo, ...props }) => {
   if (externalLogo) {
-    console.log(externalLogo);
     return (
       <Image
         src={urlFor(externalLogo).url()}

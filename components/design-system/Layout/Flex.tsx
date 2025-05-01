@@ -1,6 +1,7 @@
 import React, { ReactNode, useMemo } from "react";
 
 interface FlexProps {
+  id?: string;
   children: ReactNode;
   direction?: "row" | "column" | "row-reverse" | "column-reverse";
   justify?: "start" | "center" | "end" | "between" | "around";
@@ -26,6 +27,7 @@ const gapClasses: Record<number, string> = {
 };
 
 export const Flex: React.FC<FlexProps> = ({
+  id,
   children,
   direction = "row",
   justify = "start",
@@ -62,6 +64,7 @@ export const Flex: React.FC<FlexProps> = ({
 
   return (
     <div
+      id={id}
       className={`flex ${directionClass} ${justifyClasses[justify]} ${alignClasses[align]} ${gapClass} ${className}`}
       style={style}
     >

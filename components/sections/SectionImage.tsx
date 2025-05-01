@@ -1,8 +1,9 @@
 import React from "react";
-import Image from "next/image";
+import Image, { ImageProps } from "next/image";
 
 type SectionImageProps = {
   src: string;
+  loading?: ImageProps["loading"];
   alt?: string;
   className?: string;
   style?: React.CSSProperties;
@@ -11,6 +12,7 @@ type SectionImageProps = {
 export const SectionImage: React.FC<SectionImageProps> = ({
   src,
   alt,
+  loading,
   className,
   style,
 }) => (
@@ -22,5 +24,6 @@ export const SectionImage: React.FC<SectionImageProps> = ({
     className={className}
     alt={alt ?? ""}
     style={style}
+    loading={loading}
   />
 );

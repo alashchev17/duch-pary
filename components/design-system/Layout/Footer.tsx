@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 
 import { Settings } from "@/app/lib/types";
@@ -13,6 +15,7 @@ import { EnvelopeIcon } from "../Icons/EnvelopeIcon";
 import { PhoneIcon } from "../Icons/PhoneIcon";
 import Image from "next/image";
 import { urlFor } from "@/app/lib/sanity-utils";
+import { smoothScrollToAnchor } from "@/utils/smoothScroll";
 
 export type FooterProps = {
   data: Settings;
@@ -36,28 +39,58 @@ export const Footer: React.FC<FooterProps> = ({ data }) => {
               </div>
               <Flex className="w-full md:w-auto md:pl-9 pt-4 md:pt-5 justify-between md:justify-normal md:gap-9">
                 <Flex direction="column" className="w-1/2 md:w-auto gap-2">
-                  {leftLinks.map((link) => (
-                    <Link key={link.label} href={link.href}>
-                      <Typography
-                        variant="body"
-                        className="uppercase md:text-[18px] md:leading-[150%]"
+                  {leftLinks.map((link) =>
+                    link.href.startsWith("#") ? (
+                      <Link
+                        key={link.label}
+                        href={link.href}
+                        onClick={(e) => smoothScrollToAnchor(e, link.href)}
                       >
-                        {link.label}
-                      </Typography>
-                    </Link>
-                  ))}
+                        <Typography
+                          variant="body"
+                          className="uppercase md:text-[18px] md:leading-[150%]"
+                        >
+                          {link.label}
+                        </Typography>
+                      </Link>
+                    ) : (
+                      <Link key={link.label} href={link.href}>
+                        <Typography
+                          variant="body"
+                          className="uppercase md:text-[18px] md:leading-[150%]"
+                        >
+                          {link.label}
+                        </Typography>
+                      </Link>
+                    ),
+                  )}
                 </Flex>
                 <Flex direction="column" className="w-1/2 md:w-auto gap-2">
-                  {rightLinks.map((link) => (
-                    <Link key={link.label} href={link.href}>
-                      <Typography
-                        variant="body"
-                        className="uppercase md:text-[18px] md:leading-[150%]"
+                  {rightLinks.map((link) =>
+                    link.href.startsWith("#") ? (
+                      <Link
+                        key={link.label}
+                        href={link.href}
+                        onClick={(e) => smoothScrollToAnchor(e, link.href)}
                       >
-                        {link.label}
-                      </Typography>
-                    </Link>
-                  ))}
+                        <Typography
+                          variant="body"
+                          className="uppercase md:text-[18px] md:leading-[150%]"
+                        >
+                          {link.label}
+                        </Typography>
+                      </Link>
+                    ) : (
+                      <Link key={link.label} href={link.href}>
+                        <Typography
+                          variant="body"
+                          className="uppercase md:text-[18px] md:leading-[150%]"
+                        >
+                          {link.label}
+                        </Typography>
+                      </Link>
+                    ),
+                  )}
                 </Flex>
               </Flex>
               <div className="md:pl-6 pb-2 border-b-[3px] border-primary w-full mt-9">

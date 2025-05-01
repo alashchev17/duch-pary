@@ -6,6 +6,7 @@ import React from "react";
 import { SectionImage } from "../SectionImage";
 import { urlFor } from "@/app/lib/sanity-utils";
 import Link from "next/link";
+import { smoothScrollToAnchor } from "@/utils/smoothScroll";
 
 export type AccessoriesProps = {
   data: AccessoriesData;
@@ -14,7 +15,7 @@ export type AccessoriesProps = {
 export const Accessories: React.FC<AccessoriesProps> = ({ data }) => {
   const { title, description, cardImages, perks, slogan } = data;
   return (
-    <Flex direction="column" className="py-9 md:py-14">
+    <Flex id="accessories" direction="column" className="py-9 md:py-14">
       <Flex direction="column" className="mb-6 md:mb-8">
         <Typography
           variant="blockName"
@@ -27,12 +28,13 @@ export const Accessories: React.FC<AccessoriesProps> = ({ data }) => {
         </Typography>
         <Typography variant="body">{description}</Typography>
       </Flex>
-      <Flex className="w-full flex-1 md:flex-[unset] max-h-[290px] md:max-h-[unset] md:h-[485px] gap-2 md:gap-4 overflow-y-hidden overflow-x-auto pb-4">
+      <Flex className="w-full flex-1 md:flex-[unset] max-h-[390px] md:max-h-[unset] md:h-[485px] gap-2 md:gap-4 overflow-y-hidden overflow-x-visible pb-4 accessories-scroll">
         {cardImages.map((image) => (
           <SectionImage
-            className="max-h-[270px] md:max-h-[unset] md:aspect-[0.86] min-w-[calc(100vw-32px)] md:min-w-[unset] md:w-full h-full object-cover rounded-design"
+            className="max-h-[370px] md:max-h-[unset] md:aspect-[0.86] min-w-[calc(100vw-32px)] md:min-w-[unset] md:w-full h-full object-cover rounded-design"
             key={image.asset.url}
             src={urlFor(image).url().toString()}
+            loading="eager"
           />
         ))}
       </Flex>
@@ -67,7 +69,10 @@ export const Accessories: React.FC<AccessoriesProps> = ({ data }) => {
           <Typography variant="header3" className="text-primary text-center">
             {slogan}
           </Typography>
-          <Link href="#contact">
+          <Link
+            href="#contact"
+            onClick={(e) => smoothScrollToAnchor(e, "#contact")}
+          >
             <Button variant="secondary" className="uppercase">
               Связаться
             </Button>

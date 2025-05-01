@@ -65,3 +65,7 @@ a {
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(149, 143, 96, 0.8);
 }
+
+.accessories-scroll {
+  -webkit-overflow-scrolling: touch;
+}

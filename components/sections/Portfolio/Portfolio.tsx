@@ -14,6 +14,8 @@ import { SectionImage } from "../SectionImage";
 import { SectionVideo } from "../SectionVideo";
 
 import { useIsMobile } from "@/hooks/useIsMobile";
+import Link from "next/link";
+import { smoothScrollToAnchor } from "@/utils/smoothScroll";
 
 export type PortfolioProps = {
   data: PortfolioData;
@@ -48,7 +50,10 @@ export const Portfolio: React.FC<PortfolioProps> = ({ data }) => {
   const rows = chunkArray(mediaItems, 3);
 
   return (
-    <div className="bg-white pt-9 pb-9 md:pt-[110px] md:pb-[85px]">
+    <div
+      id="portfolio"
+      className="bg-white pt-9 pb-9 md:pt-[110px] md:pb-[85px]"
+    >
       <Container>
         <Flex className="md:pb-[45px] items-start flex-col lg:flex-row lg:items-end gap-9 lg:gap-[190px]">
           <Flex direction="column" className="gap-5 lg:gap-2">
@@ -59,12 +64,17 @@ export const Portfolio: React.FC<PortfolioProps> = ({ data }) => {
               {description}
             </Typography>
           </Flex>
-          <Button
-            variant="primary"
-            className="border-none text-nowrap uppercase w-full md:w-auto"
+          <Link
+            href="#contact"
+            onClick={(e) => smoothScrollToAnchor(e, "#contact")}
           >
-            Записаться на консультацию
-          </Button>
+            <Button
+              variant="primary"
+              className="border-none text-nowrap uppercase w-full md:w-auto"
+            >
+              Записаться на консультацию
+            </Button>
+          </Link>
         </Flex>
         <div
           className="flex flex-col mt-8"
