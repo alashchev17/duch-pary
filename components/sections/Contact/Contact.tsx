@@ -1,5 +1,6 @@
 "use client";
 
+import { sendToTelegram } from "@/app/actions";
 import { urlFor } from "@/app/lib/sanity-utils";
 import { Contact as ContactData } from "@/app/lib/types";
 import {
@@ -39,21 +40,24 @@ export const Contact: React.FC<ContactProps> = ({ data }) => {
               <Typography variant="body">{description}</Typography>
             </Flex>
           </Flex>
-          <Flex
-            direction="column"
-            className="w-full lg:w-1/2 p-6 md:p-9 bg-brand-primary gap-5 rounded-design"
+          <form
+            action={sendToTelegram}
+            className="flex flex-col w-full lg:w-1/2 p-6 md:p-9 bg-brand-primary gap-5 rounded-design"
           >
-            <Input placeholder="Имя" />
-            <Input placeholder="Почта" />
-            <Input placeholder="Сообщение..." textarea />
-            <Checkbox label="Принять условия пользования" />
+            <Input name="name" placeholder="Имя" />
+            <Input name="email" placeholder="Почта" />
+            <Input name="message" placeholder="Сообщение..." textarea />
+            <Checkbox
+              name="accepted-policy"
+              label="Принять условия пользования"
+            />
             <Button
               variant="contact"
               className="uppercase mt-auto w-full md:w-auto"
             >
               Записаться на консультацию
             </Button>
-          </Flex>
+          </form>
         </Flex>
       </Container>
     </div>

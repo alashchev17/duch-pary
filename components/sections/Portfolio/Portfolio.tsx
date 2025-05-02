@@ -67,7 +67,7 @@ export const Portfolio: React.FC<PortfolioProps> = ({ data }) => {
           </Button>
         </Flex>
         <div
-          className="flex flex-col mt-8"
+          className="flex flex-col"
           style={{
             gap: gapBetweenRows,
           }}
