@@ -17,7 +17,11 @@ export const Construction: React.FC<ConstructionProps> = ({ data }) => {
   const { isMobile } = useIsMobile();
   const { process, description, title } = data;
   return (
-    <Flex direction="column" className="gap-6 md:gap-10 md:pb-[100px] pb-16">
+    <Flex
+      id="construction"
+      direction="column"
+      className="gap-6 md:gap-10 md:pt-[50px] pt-8 md:pb-[100px] pb-16"
+    >
       <Flex direction="column">
         <Typography variant="blockName" className="text-primary mb-6 uppercase">
           Строительство

@@ -7,6 +7,7 @@ import { Button } from "../Buttons";
 import { useIsMobile } from "@/hooks/useIsMobile";
 import { Settings } from "@/app/lib/types";
 import { leftLinks, rightLinks } from "./consts";
+import { smoothScrollToAnchor } from "@/utils/smoothScroll";
 
 // Combine all links for mobile menu
 const allLinks = [...leftLinks, ...rightLinks];
@@ -88,11 +89,22 @@ export const Header: React.FC<HeaderProps> = ({ externalLogo }) => {
       {!isMobile && (
         <Flex align="center" justify="between" className="relative">
           <Flex className="gap-[36px]">
-            {leftLinks.map((link) => (
-              <Link key={link.href} href={link.href} className={linkClasses}>
-                {link.label}
-              </Link>
-            ))}
+            {leftLinks.map((link) =>
+              link.href.startsWith("#") ? (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={linkClasses}
+                  onClick={(e) => smoothScrollToAnchor(e, link.href)}
+                >
+                  {link.label}
+                </Link>
+              ) : (
+                <Link key={link.href} href={link.href} className={linkClasses}>
+                  {link.label}
+                </Link>
+              ),
+            )}
           </Flex>
 
           <Logo
@@ -101,11 +113,22 @@ export const Header: React.FC<HeaderProps> = ({ externalLogo }) => {
           />
 
           <Flex className="gap-[36px]">
-            {rightLinks.map((link) => (
-              <Link key={link.href} href={link.href} className={linkClasses}>
-                {link.label}
-              </Link>
-            ))}
+            {rightLinks.map((link) =>
+              link.href.startsWith("#") ? (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={linkClasses}
+                  onClick={(e) => smoothScrollToAnchor(e, link.href)}
+                >
+                  {link.label}
+                </Link>
+              ) : (
+                <Link key={link.href} href={link.href} className={linkClasses}>
+                  {link.label}
+                </Link>
+              ),
+            )}
           </Flex>
         </Flex>
       )}
@@ -127,21 +150,43 @@ export const Header: React.FC<HeaderProps> = ({ externalLogo }) => {
             <div className="mobile-menu fixed inset-0 bg-primary z-10 flex flex-col">
               <div className="container mx-auto px-6 h-full flex flex-col items-center justify-center">
                 <nav className="relative flex flex-col items-center">
-                  {allLinks.map((link) => (
-                    <Link
-                      key={link.href}
-                      href={link.href}
-                      className={mobileLinkClasses}
-                      onClick={() => setIsMenuOpen(false)}
-                    >
-                      {link.label}
-                    </Link>
-                  ))}
+                  {allLinks.map((link) =>
+                    link.href.startsWith("#") ? (
+                      <Link
+                        key={link.href}
+                        href={link.href}
+                        className={mobileLinkClasses}
+                        onClick={(e) =>
+                          smoothScrollToAnchor(e, link.href, () =>
+                            setIsMenuOpen(false),
+                          )
+                        }
+                      >
+                        {link.label}
+                      </Link>
+                    ) : (
+                      <Link
+                        key={link.href}
+                        href={link.href}
+                        className={mobileLinkClasses}
+                        onClick={() => setIsMenuOpen(false)}
+                      >
+                        {link.label}
+                      </Link>
+                    ),
+                  )}
                 </nav>
-                <Link href="#contact">
+                <Link
+                  href="#contact"
+                  onClick={(e) =>
+                    smoothScrollToAnchor(e, "#contact", () =>
+                      setIsMenuOpen(false),
+                    )
+                  }
+                >
                   <Button
                     variant="primary"
-                    className="absolute bottom-[24px] left-[20px] right-[20px] text-brand-bg uppercase"
+                    className="absolute bottom-[24px] left-[20px] right-[20px] !text-brand-bg uppercase"
                   >
                     Связаться
                   </Button>

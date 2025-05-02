@@ -10,6 +10,7 @@ import { urlFor } from "@/app/lib/sanity-utils";
 
 import { Hero as HeroData } from "@/app/lib/types";
 import { useIsMobile } from "@/hooks/useIsMobile";
+import { smoothScrollToAnchor } from "@/utils/smoothScroll";
 
 type HeroProps = {
   data: HeroData;
@@ -21,6 +22,7 @@ export const Hero: React.FC<HeroProps> = ({ data }) => {
 
   return (
     <Flex
+      id="hero"
       className="py-8 max-h-[calc(100vh-5rem)] gap-3 md:gap-6"
       direction="column"
     >
@@ -30,6 +32,15 @@ export const Hero: React.FC<HeroProps> = ({ data }) => {
       >
         {data.title}
       </Typography>
+
+      {data.subtitle && (
+        <Typography
+          variant="body"
+          className="block text-white text-center mx-auto"
+        >
+          {data.subtitle}
+        </Typography>
+      )}
 
       <div className="relative w-full h-[100vh] rounded-design overflow-hidden">
         {type === "video" ? (
@@ -48,6 +59,7 @@ export const Hero: React.FC<HeroProps> = ({ data }) => {
           <Link
             href={data.ctaButton.link}
             className="absolute left-[50%] bottom-[36px] -translate-x-[50%]"
+            onClick={(e) => smoothScrollToAnchor(e, data.ctaButton.link)}
           >
             <Button className="whitespace-nowrap uppercase border-transparent md:border-dark-green">
               {data.ctaButton.text}
@@ -56,7 +68,11 @@ export const Hero: React.FC<HeroProps> = ({ data }) => {
         )}
       </div>
       {isMobile && (
-        <Link href={data.ctaButton.link} className="w-full mx-auto">
+        <Link
+          href={data.ctaButton.link}
+          onClick={(e) => smoothScrollToAnchor(e, data.ctaButton.link)}
+          className="w-full mx-auto"
+        >
           <Button className="w-full uppercase border-transparent md:border-dark-green">
             {data.ctaButton.text}
           </Button>

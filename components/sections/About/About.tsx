@@ -16,7 +16,11 @@ export const About: React.FC<AboutProps> = ({ data }) => {
   const { isMobile } = useIsMobile();
   const { image, description, title, features } = data;
   return (
-    <Flex direction="column" className="gap-6 md:gap-4 md:pb-[100px] pb-16">
+    <Flex
+      id="about"
+      direction="column"
+      className="gap-6 md:gap-4 md:py-[50px] py-8"
+    >
       <Flex
         direction={isMobile ? "column" : "row"}
         align="start"

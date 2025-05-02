@@ -12,7 +12,6 @@ export const FooterLogo: React.FC<FooterLogoProps> = ({
   ...props
 }) => {
   if (externalLogo) {
-    console.log(externalLogo);
     return (
       <Image
         src={urlFor(externalLogo).url()}

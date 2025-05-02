@@ -7,6 +7,7 @@ import { Hero } from "../../lib/types";
 const heroQuery = `*[_type == "hero"][0]{
   _type,
   title,
+  subtitle,
   backgroundMedia{
     type,
     alt,
