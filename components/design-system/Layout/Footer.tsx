@@ -127,7 +127,7 @@ export const Footer: React.FC<FooterProps> = ({ data }) => {
                   </Link>
                 </Flex>
                 {data.socialMedia && (
-                  <Flex className="pt-6 md:pt-0 w-full md:w-auto justify-between md:justify-normal md:gap-14">
+                  <Flex className="pt-8 md:pt-0 w-full md:w-auto justify-between md:justify-normal md:gap-14">
                     {data.socialMedia.map((link) => (
                       <Link key={link.platform} href={link.url}>
                         {link.platform !== "other" || !link.icon ? (

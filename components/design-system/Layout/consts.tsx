@@ -1,6 +1,7 @@
 import { FacebookIcon } from "../Icons/FacebookIcon";
 import { InstagramIcon } from "../Icons/InstagramIcon";
 import { LinkedinIcon } from "../Icons/LinkedinIcon";
+import { TelegramIcon } from "../Icons/TelegramIcon";
 import { TwitterIcon } from "../Icons/TwitterIcon";
 import { YouTubeIcon } from "../Icons/YouTubeIcon";
 
@@ -31,4 +32,5 @@ export const iconMapByPlatform: Record<string, React.ReactNode> = {
   twitter: <TwitterIcon />,
   instagram: <InstagramIcon />,
   youtube: <YouTubeIcon />,
+  telegram: <TelegramIcon />,
 };

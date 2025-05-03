@@ -55,7 +55,7 @@ export const Portfolio: React.FC<PortfolioProps> = ({ data }) => {
       className="bg-white pt-9 pb-9 md:pt-[110px] md:pb-[85px]"
     >
       <Container>
-        <Flex className="md:pb-[45px] items-start flex-col lg:flex-row lg:items-end gap-9 lg:gap-[190px]">
+        <Flex className="pb-6 md:pb-[45px] items-start flex-col lg:flex-row lg:items-end gap-9 lg:gap-[190px]">
           <Flex direction="column" className="gap-5 lg:gap-2">
             <Typography variant="header2" className="text-brand-bg">
               {title}
@@ -67,6 +67,7 @@ export const Portfolio: React.FC<PortfolioProps> = ({ data }) => {
           <Link
             href="#contact"
             onClick={(e) => smoothScrollToAnchor(e, "#contact")}
+            className="inline-block w-full md:w-auto"
           >
             <Button
               variant="primary"
