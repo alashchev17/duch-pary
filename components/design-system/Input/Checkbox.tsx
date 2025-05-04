@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from "react";
 import Typography from "../Typography";
 import styles from "./Checkbox.module.css";
@@ -67,6 +69,8 @@ export const Checkbox: React.FC<CheckboxProps> = ({
         <Tick
           className={classNames(
             styles.checkboxTick,
+            { [styles.checkboxTickChecked]: isChecked },
+            `${state === "error" ? "[&>path]:stroke-destructive" : ""}`,
             "[&>path]:stroke-brand-bg",
           )}
         />

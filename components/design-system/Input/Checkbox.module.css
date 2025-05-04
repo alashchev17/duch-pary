@@ -36,11 +36,6 @@
   border-color: var(--color-destructive);
 }
 
-.checkboxInput:checked + .checkboxCustom {
-  background-color: #958f60;
-  border-color: #958f60;
-}
-
 .checkboxInput:focus + .checkboxCustom {
   box-shadow: 0 0 0 2px rgba(149, 143, 96, 0.25);
 }
@@ -54,7 +49,7 @@
   color: #ffffff;
 }
 
-.checkboxInput:checked ~ .checkboxTick {
+.checkboxTickChecked {
   transform: translate(-50%, -50%) scale(1);
 }
 

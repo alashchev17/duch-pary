@@ -75,6 +75,10 @@ export const Contact: React.FC<ContactProps> = ({ data }) => {
     }
   }, [formState.success, formState.globalError, formState.fieldErrors]);
 
+  useEffect(() => {
+    console.log(`[DEBUG]: fields: `, fields);
+  }, [fields]);
+
   return (
     <div id="contact" className="bg-white text-black py-8 md:py-16">
       <Container>
