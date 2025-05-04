@@ -19,7 +19,7 @@ export const Training: React.FC<TrainingProps> = ({ data }) => {
       <Flex direction="column" className="mb-6 md:mb-8 md:max-w-[70%]">
         <Typography
           variant="blockName"
-          className="text-primary mb-4 md:mb-6 uppercase"
+          className="text-brand-primary mb-4 md:mb-6 uppercase"
         >
           Обучение
         </Typography>
@@ -34,14 +34,17 @@ export const Training: React.FC<TrainingProps> = ({ data }) => {
             <Flex
               key={program.title}
               justify="between"
-              className="flex-col md:flex-row rounded-design border-[3px] border-primary md:h-[285px] lg:h-[410px] w-full xl:max-w-[calc(50%-8px)] overflow-hidden"
+              className="flex-col md:flex-row rounded-design border-[3px] border-brand-primary md:h-[285px] lg:h-[410px] w-full xl:max-w-[calc(50%-8px)] overflow-hidden"
             >
               <Flex
                 direction="column"
                 justify="between"
                 className="gap-[40px] md:gap-[unset] p-6 md:p-9 h-full"
               >
-                <Typography variant="menuBottoms" className="text-primary">
+                <Typography
+                  variant="menuBottoms"
+                  className="text-brand-primary"
+                >
                   Программа
                 </Typography>
                 <Flex direction="column" className="gap-2 md:gap-4">
@@ -66,7 +69,10 @@ export const Training: React.FC<TrainingProps> = ({ data }) => {
           direction="column"
           className="items-center justify-center gap-6 md:gap-9 mt-6 md:mt-12 max-w-[100%] md:max-w-[750px] mx-auto"
         >
-          <Typography variant="header3" className="text-primary text-center">
+          <Typography
+            variant="header3"
+            className="text-brand-primary text-center"
+          >
             {slogan}
           </Typography>
         </Flex>

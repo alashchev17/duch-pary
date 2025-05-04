@@ -23,8 +23,11 @@ export const Slogan: React.FC<SloganProps> = ({ data }) => {
       direction={isMobile ? "column" : "row"}
       className="gap-3 md:gap-[22px] mt-0 md:mt-12 mb-8 md:mb-[50px] md:max-h-[380px] items-stretch"
     >
-      <div className="flex items-center justify-center w-full md:max-w-[458px] h-[inherit] text-center px-[16px] md:px-[56px] py-[65.5px] md:py-[94.5px] border-[3px] border-primary rounded-design">
-        <Typography variant="header3" className="text-primary md:text-[26px]">
+      <div className="flex items-center justify-center w-full md:max-w-[458px] h-[inherit] text-center px-[16px] md:px-[56px] py-[65.5px] md:py-[94.5px] border-[3px] border-brand-primary rounded-design">
+        <Typography
+          variant="header3"
+          className="text-brand-primary md:text-[26px]"
+        >
           {slogan}
         </Typography>
       </div>

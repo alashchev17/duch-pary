@@ -24,13 +24,13 @@ const BurgerIcon: React.FC<{ open: boolean; onClick: () => void }> = ({
       aria-label={open ? "Закрыть меню" : "Открыть меню"}
     >
       <span
-        className={`block w-6 h-0.5 ${open ? "bg-dark-green" : "bg-primary"} transition-transform duration-300 ${open ? "rotate-45 translate-y-2" : ""}`}
+        className={`block w-6 h-0.5 ${open ? "bg-dark-green" : "bg-brand-primary"} transition-transform duration-300 ${open ? "rotate-45 translate-y-2" : ""}`}
       ></span>
       <span
-        className={`block w-6 h-0.5 ${open ? "bg-dark-green" : "bg-primary"} transition-opacity duration-300 ${open ? "opacity-0" : "opacity-100"}`}
+        className={`block w-6 h-0.5 ${open ? "bg-dark-green" : "bg-brand-primary"} transition-opacity duration-300 ${open ? "opacity-0" : "opacity-100"}`}
       ></span>
       <span
-        className={`block w-6 h-0.5 ${open ? "bg-dark-green" : "bg-primary"} transition-transform duration-300 ${open ? "-rotate-45 -translate-y-2" : ""}`}
+        className={`block w-6 h-0.5 ${open ? "bg-dark-green" : "bg-brand-primary"} transition-transform duration-300 ${open ? "-rotate-45 -translate-y-2" : ""}`}
       ></span>
     </button>
   );
@@ -79,7 +79,7 @@ export const Header: React.FC<HeaderProps> = ({ externalLogo }) => {
   };
 
   const linkClasses =
-    "font-manrope text-[20px] leading-[18px] uppercase text-primary";
+    "font-manrope text-[20px] leading-[18px] uppercase text-brand-primary";
   const mobileLinkClasses =
     "font-nevduplenysh text-h2-mobile text-dark-green py-2";
 
@@ -147,7 +147,7 @@ export const Header: React.FC<HeaderProps> = ({ externalLogo }) => {
 
           {/* Mobile menu */}
           {isMenuOpen && (
-            <div className="mobile-menu fixed inset-0 bg-primary z-10 flex flex-col">
+            <div className="mobile-menu fixed inset-0 bg-brand-primary z-10 flex flex-col">
               <div className="container mx-auto px-6 h-full flex flex-col items-center justify-center">
                 <nav className="relative flex flex-col items-center">
                   {allLinks.map((link) =>

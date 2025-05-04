@@ -2,6 +2,7 @@ import type { Config } from "tailwindcss";
 import plugin from "tailwindcss/plugin";
 
 const config: Config = {
+  darkMode: ["class"],
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -13,7 +14,6 @@ const config: Config = {
         xs: "470px",
       },
       colors: {
-        // Custom brand colors
         brand: {
           primary: "#958F60",
           "primary-75": "rgba(149, 143, 96, 0.75)",
@@ -23,10 +23,10 @@ const config: Config = {
           "non-accent-1": "#27372E",
           "non-accent-2": "#827D53",
         },
-        primary: "#958F60",
         "dark-green": "#233129",
         "non-accent-1": "#27372E",
         "non-accent-2": "#827D53",
+        destructive: "#931915",
       },
       fontFamily: {
         spectral: ["var(--font-spectral)", "serif"],
@@ -83,8 +83,6 @@ const config: Config = {
             fontWeight: "400",
           },
         ],
-
-        // Mobile sizes
         "h1-mobile": [
           "26px",
           {
@@ -177,6 +175,8 @@ const config: Config = {
         ":root": colorVariables,
       });
     }),
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
+    require("tailwindcss-animate"),
   ],
 };
 

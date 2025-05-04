@@ -32,6 +32,10 @@
   transition: all 0.2s ease;
 }
 
+.checkboxCustomError {
+  border-color: var(--color-destructive);
+}
+
 .checkboxInput:checked + .checkboxCustom {
   background-color: #958f60;
   border-color: #958f60;
@@ -56,4 +60,8 @@
 
 .checkboxLabel {
   user-select: none;
+}
+
+.checkboxLabelError {
+  color: var(--color-destructive);
 }

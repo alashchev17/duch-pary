@@ -62,8 +62,8 @@ export const Input: React.FC<InputProps> = ({
         <ErrorIcon
           className={
             textarea
-              ? "absolute right-6 top-6"
-              : "absolute right-6 top-[50%] translate-y-[-50%]"
+              ? "absolute right-2 md:right-6 top-6"
+              : "absolute right-2 md:right-6 top-[50%] translate-y-[-50%]"
           }
         />
       )}

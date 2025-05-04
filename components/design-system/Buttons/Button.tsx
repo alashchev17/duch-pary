@@ -27,8 +27,9 @@ export const Button: React.FC<ButtonProps> = ({
   // Variant-specific classes
   const variantClasses = {
     primary:
-      "border-dark-green bg-primary text-white hover:bg-dark-green hover:text-white",
-    secondary: "bg-dark-green border-primary text-white hover:bg-primary",
+      "border-dark-green bg-brand-primary text-white hover:bg-dark-green hover:text-white",
+    secondary:
+      "bg-dark-green border-brand-primary text-white hover:bg-brand-primary",
     contact: "bg-dark-green text-white hover:bg-transparent border-dark-green",
   };
 

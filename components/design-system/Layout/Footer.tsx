@@ -32,8 +32,8 @@ export const Footer: React.FC<FooterProps> = ({ data }) => {
           />
           <Flex className="w-full lg:max-w-[calc(50%-16px)]">
             <Flex direction="column" className="w-full">
-              <div className="md:pl-6 pb-2 border-b-[3px] border-primary w-full">
-                <Typography variant="header4" className="text-primary">
+              <div className="md:pl-6 pb-2 border-b-[3px] border-brand-primary w-full">
+                <Typography variant="header4" className="text-brand-primary">
                   Навигация
                 </Typography>
               </div>
@@ -93,8 +93,8 @@ export const Footer: React.FC<FooterProps> = ({ data }) => {
                   )}
                 </Flex>
               </Flex>
-              <div className="md:pl-6 pb-2 border-b-[3px] border-primary w-full mt-9">
-                <Typography variant="header4" className="text-primary">
+              <div className="md:pl-6 pb-2 border-b-[3px] border-brand-primary w-full mt-9">
+                <Typography variant="header4" className="text-brand-primary">
                   Контакты
                 </Typography>
               </div>

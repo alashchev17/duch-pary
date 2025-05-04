@@ -1,7 +1,14 @@
-'use client'
+"use client";
 
-import React from 'react'
-import { Typography, ColorPalette, Button, Container, Flex, Grid } from '../../components/design-system'
+import React from "react";
+import {
+  Typography,
+  ColorPalette,
+  Button,
+  Container,
+  Flex,
+  Grid,
+} from "../../components/design-system";
 
 export default function DesignSystemPage() {
   return (
@@ -24,16 +31,17 @@ export default function DesignSystemPage() {
 
               <Flex direction="column" gap={8}>
                 <div className="mb-6">
-                  <Typography variant="header1" className="text-primary">
+                  <Typography variant="header1" className="text-brand-primary">
                     Header 1
                   </Typography>
                   <Typography variant="body" className="opacity-70">
-                    Family: Spectral SC | Weight: Medium | Size: 48px | Line height: 80%
+                    Family: Spectral SC | Weight: Medium | Size: 48px | Line
+                    height: 80%
                   </Typography>
                 </div>
 
                 <div className="mb-6">
-                  <Typography variant="header2" className="text-primary">
+                  <Typography variant="header2" className="text-brand-primary">
                     Header 2
                   </Typography>
                   <Typography variant="body" className="opacity-70">
@@ -42,48 +50,61 @@ export default function DesignSystemPage() {
                 </div>
 
                 <div className="mb-6">
-                  <Typography variant="header3" className="text-primary">
+                  <Typography variant="header3" className="text-brand-primary">
                     Header 3
                   </Typography>
                   <Typography variant="body" className="opacity-70">
-                    Family: Spectral SC | Size: 32px | Weight: Regular | Line height: 115%
+                    Family: Spectral SC | Size: 32px | Weight: Regular | Line
+                    height: 115%
                   </Typography>
                 </div>
 
                 <div className="mb-6">
-                  <Typography variant="header4" className="text-primary">
+                  <Typography variant="header4" className="text-brand-primary">
                     Header 4
                   </Typography>
                   <Typography variant="body" className="opacity-70">
-                    Family: Spectral SC | Size: 24px | Weight: Regular | Line height: 110%
+                    Family: Spectral SC | Size: 24px | Weight: Regular | Line
+                    height: 110%
                   </Typography>
                 </div>
 
                 <div className="mb-6">
-                  <Typography variant="blockName" className="text-primary" uppercase>
+                  <Typography
+                    variant="blockName"
+                    className="text-brand-primary"
+                    uppercase
+                  >
                     BLOK NAME
                   </Typography>
                   <Typography variant="body" className="opacity-70">
-                    Family: Spectral SC | Weight: medium | Size: 20px | Letter space: 10%
+                    Family: Spectral SC | Weight: medium | Size: 20px | Letter
+                    space: 10%
                   </Typography>
                 </div>
 
                 <div className="mb-6">
-                  <Typography variant="menuBottoms" className="text-primary">
+                  <Typography
+                    variant="menuBottoms"
+                    className="text-brand-primary"
+                  >
                     menu-bottoms
                   </Typography>
                   <Typography variant="body" className="opacity-70">
-                    Family: Manrope | Weight: semibold | Size: 20px | Line height: 100%
+                    Family: Manrope | Weight: semibold | Size: 20px | Line
+                    height: 100%
                   </Typography>
                 </div>
 
                 <div className="mb-6">
                   <Typography variant="body">
-                    Body text example. This is a paragraph with sample content to demonstrate the body text style used throughout the
+                    Body text example. This is a paragraph with sample content
+                    to demonstrate the body text style used throughout the
                     application.
                   </Typography>
                   <Typography variant="body" className="opacity-70">
-                    Family: Manrope | Weight: regular | Size: 20px | Line Height: 125%
+                    Family: Manrope | Weight: regular | Size: 20px | Line
+                    Height: 125%
                   </Typography>
                 </div>
               </Flex>
@@ -173,5 +194,5 @@ export default function DesignSystemPage() {
         </div>
       </Container>
     </div>
-  )
+  );
 }

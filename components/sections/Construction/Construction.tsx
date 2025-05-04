@@ -23,7 +23,10 @@ export const Construction: React.FC<ConstructionProps> = ({ data }) => {
       className="gap-6 md:gap-10 md:pt-[50px] pt-8 md:pb-[100px] pb-16"
     >
       <Flex direction="column">
-        <Typography variant="blockName" className="text-primary mb-6 uppercase">
+        <Typography
+          variant="blockName"
+          className="text-brand-primary mb-6 uppercase"
+        >
           Строительство
         </Typography>
         <Typography variant="header2" className="mb-2">
@@ -43,7 +46,7 @@ export const Construction: React.FC<ConstructionProps> = ({ data }) => {
                 align="stretch"
                 className={`flex-col ${
                   isOdd ? "md:flex-row" : "md:flex-row-reverse"
-                } md w-full border-4 border-primary rounded-design h-[447px] md:h-[427px] xl:h-[427px]"`}
+                } md w-full border-4 border-brand-primary rounded-design h-[447px] md:h-[427px] xl:h-[427px]"`}
               >
                 {p.backgroundMedia && (
                   <>
@@ -72,7 +75,7 @@ export const Construction: React.FC<ConstructionProps> = ({ data }) => {
                 >
                   <Typography
                     variant="menuBottoms"
-                    className="font-bold md:!text-[32px] text-primary"
+                    className="font-bold md:!text-[32px] text-brand-primary"
                   >
                     {processCount}
                   </Typography>

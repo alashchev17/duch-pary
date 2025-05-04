@@ -19,7 +19,7 @@ export const Accessories: React.FC<AccessoriesProps> = ({ data }) => {
       <Flex direction="column" className="mb-6 md:mb-8">
         <Typography
           variant="blockName"
-          className="text-primary mb-4 md:mb-6 uppercase"
+          className="text-brand-primary mb-4 md:mb-6 uppercase"
         >
           Банные печи и аксессуары
         </Typography>
@@ -66,7 +66,10 @@ export const Accessories: React.FC<AccessoriesProps> = ({ data }) => {
           direction="column"
           className="items-center justify-center gap-6 md:gap-9 mt-6 md:mt-12 max-w-[100%] md:max-w-[662px] mx-auto"
         >
-          <Typography variant="header3" className="text-primary text-center">
+          <Typography
+            variant="header3"
+            className="text-brand-primary text-center"
+          >
             {slogan}
           </Typography>
           <Link

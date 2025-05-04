@@ -23,12 +23,12 @@ export const Hero: React.FC<HeroProps> = ({ data }) => {
   return (
     <Flex
       id="hero"
-      className="py-8 max-h-[calc(100vh-5rem)] gap-3 md:gap-6"
+      className="py-4 md:py-8 max-h-[calc(100vh-5rem)] gap-3 md:gap-6"
       direction="column"
     >
       <Typography
         variant="header1"
-        className="text-primary text-center md:max-w-[950px] md:mx-auto"
+        className="text-brand-primary md:text-center md:max-w-[1100px] md:mx-auto"
       >
         {data.title}
       </Typography>
@@ -36,7 +36,7 @@ export const Hero: React.FC<HeroProps> = ({ data }) => {
       {data.subtitle && (
         <Typography
           variant="body"
-          className="block text-white text-center mx-auto"
+          className="block text-white md:text-center md:mx-auto"
         >
           {data.subtitle}
         </Typography>

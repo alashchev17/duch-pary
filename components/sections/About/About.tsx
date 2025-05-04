@@ -29,7 +29,7 @@ export const About: React.FC<AboutProps> = ({ data }) => {
         <Flex direction="column" className="md:max-w-[calc(50%-(40px/1.25))]">
           <Typography
             variant="blockName"
-            className="text-primary mb-6 uppercase"
+            className="text-brand-primary mb-6 uppercase"
           >
             Про нас
           </Typography>

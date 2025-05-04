@@ -6,6 +6,7 @@ import {
 } from "../components/design-system/fonts";
 import "./globals.css";
 import { getSettings } from "./api/settings";
+import { Toaster } from "@/components/ui/toaster";
 
 // Default metadata as fallback
 const defaultMetadata = {
@@ -52,6 +53,7 @@ export default function RootLayout({
       >
         {children}
       </body>
+      <Toaster />
     </html>
   );
 }

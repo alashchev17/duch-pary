@@ -12,6 +12,7 @@ export type CheckboxProps = {
   name?: string;
   required?: boolean;
   disabled?: boolean;
+  state?: "error" | "default";
 };
 
 export const Checkbox: React.FC<CheckboxProps> = ({
@@ -20,6 +21,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
   onCheckedChange,
   id,
   name,
+  state = "default",
   required = false,
   disabled = false,
 }) => {
@@ -57,7 +59,11 @@ export const Checkbox: React.FC<CheckboxProps> = ({
           required={required}
           disabled={disabled}
         />
-        <div className={styles.checkboxCustom}></div>
+        <div
+          className={classNames(styles.checkboxCustom, {
+            [styles.checkboxCustomError]: state === "error",
+          })}
+        ></div>
         <Tick
           className={classNames(
             styles.checkboxTick,
@@ -68,7 +74,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
       {label && (
         <Typography
           variant="body"
-          className={`${styles.checkboxLabel} font-[16px] leading-[26px] text-brand-bg`}
+          className={`${styles.checkboxLabel} ${state === "error" ? styles.checkboxLabelError : ""} font-[16px] leading-[26px] text-brand-bg`}
         >
           {label}
         </Typography>
