@@ -15,6 +15,7 @@ export const Logo: React.FC<LogoProps> = ({ externalLogo, ...props }) => {
         width={204}
         height={39}
         sizes="100vw"
+        priority
         alt="Icon: Logo"
         className={props.className}
       />

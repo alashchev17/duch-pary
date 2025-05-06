@@ -5,6 +5,13 @@ const constructionSchema = defineType({
   title: "Строительство",
   type: "document",
   fields: [
+    // Language field required for document internationalization
+    defineField({
+      name: "language",
+      type: "string",
+      readOnly: true,
+      hidden: true,
+    }),
     defineField({
       name: "title",
       title: "Заголовок секции",
@@ -25,6 +32,13 @@ const constructionSchema = defineType({
         {
           type: "object",
           fields: [
+    // Language field required for document internationalization
+    defineField({
+      name: "language",
+      type: "string",
+      readOnly: true,
+      hidden: true,
+    }),
             defineField({
               name: "title",
               title: "Название этапа",
@@ -42,6 +56,13 @@ const constructionSchema = defineType({
               title: "Фоновое изображение или видео этапа",
               type: "object",
               fields: [
+    // Language field required for document internationalization
+    defineField({
+      name: "language",
+      type: "string",
+      readOnly: true,
+      hidden: true,
+    }),
                 {
                   name: "type",
                   title: "Тип медиа",

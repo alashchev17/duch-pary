@@ -11,6 +11,14 @@ import { getTraining } from "./training";
 import { getContact } from "./contact";
 import { getSettings } from "./settings";
 
+export type SanityLanguage = "en" | "ru" | "pl";
+
+export const languageCodeMap: Record<string, SanityLanguage> = {
+  eng: "en",
+  rus: "ru",
+  pln: "pl",
+};
+
 /**
  * Получает все данные сайта с использованием отдельных запросов для каждой секции
  * @returns Все данные для отображения сайта

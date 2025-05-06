@@ -49,9 +49,14 @@ export const Checkbox: React.FC<CheckboxProps> = ({
     id || `checkbox-${Math.random().toString(36).substring(2, 9)}`;
 
   return (
-    <label htmlFor={checkboxId} className={styles.checkboxContainer}>
+    <label
+      suppressHydrationWarning
+      htmlFor={checkboxId}
+      className={styles.checkboxContainer}
+    >
       <div className={styles.checkboxWrapper}>
         <input
+          suppressHydrationWarning
           type="checkbox"
           id={checkboxId}
           name={name}

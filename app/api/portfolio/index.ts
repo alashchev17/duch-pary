@@ -4,8 +4,9 @@ import { Portfolio } from "../../lib/types";
 /**
  * GROQ запрос для получения данных секции Portfolio
  */
-const portfolioQuery = `*[_type == "portfolio"][0]{
+const portfolioQuery = `*[_type == "portfolio"]{
   _type,
+  language,
   title,
   description,
   mediaItems[]{
@@ -35,6 +36,6 @@ const portfolioQuery = `*[_type == "portfolio"][0]{
  * Получает данные для секции Portfolio
  * @returns Данные секции Portfolio
  */
-export async function getPortfolio(): Promise<Portfolio> {
-  return fetchSanityData<Portfolio>(portfolioQuery);
+export async function getPortfolio(): Promise<Portfolio[]> {
+  return fetchSanityData<Portfolio[]>(portfolioQuery);
 }

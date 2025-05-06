@@ -5,6 +5,13 @@ const trainingSchema = defineType({
   title: "Обучение",
   type: "document",
   fields: [
+    // Language field required for document internationalization
+    defineField({
+      name: "language",
+      type: "string",
+      readOnly: true,
+      hidden: true,
+    }),
     defineField({
       name: "title",
       title: "Заголовок секции",
@@ -30,6 +37,13 @@ const trainingSchema = defineType({
         {
           type: "object",
           fields: [
+    // Language field required for document internationalization
+    defineField({
+      name: "language",
+      type: "string",
+      readOnly: true,
+      hidden: true,
+    }),
             defineField({
               name: "title",
               title: "Название программы",

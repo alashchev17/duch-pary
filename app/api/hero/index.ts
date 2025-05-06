@@ -4,8 +4,9 @@ import { Hero } from "../../lib/types";
 /**
  * GROQ запрос для получения данных секции Hero
  */
-const heroQuery = `*[_type == "hero"][0]{
+const heroQuery = `*[_type == "hero"]{
   _type,
+  language,
   title,
   subtitle,
   backgroundMedia{
@@ -38,6 +39,6 @@ const heroQuery = `*[_type == "hero"][0]{
  * Получает данные для секции Hero
  * @returns Данные секции Hero
  */
-export async function getHero(): Promise<Hero> {
-  return fetchSanityData<Hero>(heroQuery);
+export async function getHero(): Promise<Hero[]> {
+  return fetchSanityData<Hero[]>(heroQuery);
 }

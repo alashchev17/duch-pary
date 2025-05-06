@@ -4,8 +4,9 @@ import { Slogan } from "../../lib/types";
 /**
  * GROQ запрос для получения данных секции Slogan
  */
-const sloganQuery = `*[_type == "slogan"][0]{
+const sloganQuery = `*[_type == "slogan"]{
   _type,
+  language,
   title,
   slogan,
   backgroundMedia{
@@ -34,6 +35,6 @@ const sloganQuery = `*[_type == "slogan"][0]{
  * Получает данные для секции Slogan
  * @returns Данные секции Slogan
  */
-export async function getSlogan(): Promise<Slogan> {
-  return fetchSanityData<Slogan>(sloganQuery);
+export async function getSlogan(): Promise<Slogan[]> {
+  return fetchSanityData<Slogan[]>(sloganQuery);
 }

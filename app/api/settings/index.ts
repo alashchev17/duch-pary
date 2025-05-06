@@ -4,8 +4,9 @@ import { Settings } from "../../lib/types";
 /**
  * GROQ запрос для получения данных секции Settings
  */
-const settingsQuery = `*[_type == "settings"][0]{
+const settingsQuery = `*[_type == "settings"]{
   _type,
+  language,
   siteName,
   email,
   phone,
@@ -60,6 +61,6 @@ const settingsQuery = `*[_type == "settings"][0]{
  * Получает данные настроек сайта
  * @returns Данные настроек сайта
  */
-export async function getSettings(): Promise<Settings> {
-  return fetchSanityData<Settings>(settingsQuery);
+export async function getSettings(): Promise<Settings[]> {
+  return fetchSanityData<Settings[]>(settingsQuery);
 }

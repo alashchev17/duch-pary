@@ -5,6 +5,13 @@ const aboutSchema = defineType({
   title: "Про нас",
   type: "document",
   fields: [
+    // Language field required for document internationalization
+    defineField({
+      name: "language",
+      type: "string",
+      readOnly: true,
+      hidden: true,
+    }),
     defineField({
       name: "title",
       title: "Заголовок секции",

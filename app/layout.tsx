@@ -7,38 +7,29 @@ import {
 import "./globals.css";
 import { getSettings } from "./api/settings";
 import { Toaster } from "@/components/ui/toaster";
+import { LanguageProvider } from "@/components/design-system/LanguageSwitcher";
 
 // Default metadata as fallback
-const defaultMetadata = {
+export const defaultMetadata = {
   title: "Steam Spirit",
   description: "Строительство бань и парилок Steam Spirit",
 };
 
 export async function generateMetadata(): Promise<Metadata> {
-  try {
-    // Try to fetch settings from Sanity
-    const settings = await getSettings();
+  const settingsArr = await getSettings();
+  const settings =
+    settingsArr.find((s) => s.language === "ru") || settingsArr[0];
 
-    // Base metadata with the title and description
-    const metadata: Metadata = {
-      title: settings.siteName,
-      description: settings.siteDescription || defaultMetadata.description,
-    };
-
-    // Add favicon if logo is present in settings
-    if (settings.favicon) {
-      metadata.icons = {
-        icon: settings.favicon.asset.url,
-        apple: settings.favicon.asset.url,
-      };
-    }
-
-    return metadata;
-  } catch (error) {
-    // If there's an error fetching from Sanity, use default metadata
-    console.error("Error fetching metadata from Sanity:", error);
-    return defaultMetadata;
-  }
+  return {
+    title: settings.siteName,
+    description: settings.siteDescription || defaultMetadata.description,
+    icons: settings.favicon
+      ? {
+          icon: settings.favicon.asset.url,
+          apple: settings.favicon.asset.url,
+        }
+      : undefined,
+  };
 }
 
 export default function RootLayout({
@@ -51,9 +42,9 @@ export default function RootLayout({
       <body
         className={`${manrope.variable} ${spectralSC.variable} ${nevduplenysh.variable} antialiased bg-dark-green`}
       >
-        {children}
+        <LanguageProvider>{children}</LanguageProvider>
+        <Toaster />
       </body>
-      <Toaster />
     </html>
   );
 }

@@ -5,6 +5,13 @@ const sloganSchema = defineType({
   title: "Слоган-секция",
   type: "document",
   fields: [
+    // Language field required for document internationalization
+    defineField({
+      name: "language",
+      type: "string",
+      readOnly: true,
+      hidden: true,
+    }),
     defineField({
       name: "slogan",
       title: "Текст слогана",
@@ -17,6 +24,13 @@ const sloganSchema = defineType({
       type: "object",
       description: "Основное фоновое изображение или видео для секции слогана",
       fields: [
+    // Language field required for document internationalization
+    defineField({
+      name: "language",
+      type: "string",
+      readOnly: true,
+      hidden: true,
+    }),
         {
           name: "type",
           title: "Тип медиа",

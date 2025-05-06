@@ -5,6 +5,13 @@ const accessoriesSchema = defineType({
   title: "Аксессуары",
   type: "document",
   fields: [
+    // Language field required for document internationalization
+    defineField({
+      name: "language",
+      type: "string",
+      readOnly: true,
+      hidden: true,
+    }),
     defineField({
       name: "title",
       title: "Заголовок секции",
@@ -50,6 +57,13 @@ const accessoriesSchema = defineType({
         "Сконфигурируйте текста карточек преимуществ, которые будут отображены сразу под аксессуарами",
       type: "object",
       fields: [
+    // Language field required for document internationalization
+    defineField({
+      name: "language",
+      type: "string",
+      readOnly: true,
+      hidden: true,
+    }),
         defineField({
           name: "visible",
           title: "Должны ли отображаться карточки преимуществ?",

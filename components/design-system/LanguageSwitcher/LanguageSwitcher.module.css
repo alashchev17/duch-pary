@@ -1,0 +1,79 @@
+.switcherContainer {
+  position: relative;
+}
+
+.switcher {
+  font-size: 18px;
+  font-weight: 700;
+  text-transform: uppercase;
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 8px;
+  transition: background-color 0.15s ease-in-out;
+  &:hover:not(.mobile) {
+    background-color: var(--accent);
+  }
+}
+
+.switcherChevron {
+  transition: transform 0.3s ease-in-out;
+}
+.switcherChevronActive {
+  transform: rotate(180deg);
+}
+
+.switcherInner {
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  visibility: hidden;
+  z-index: 10;
+  border-radius: 12px;
+  border: 2px solid var(--accent);
+  padding: 8px;
+  transition:
+    opacity 0.15s ease-in-out,
+    visibility 0.15s ease-in-out;
+  background-color: var(--tertiary-brand);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.switcherInnerOpen {
+  opacity: 1;
+  z-index: 10;
+  visibility: visible;
+}
+
+.switcherOption {
+  padding: 8px;
+  text-transform: uppercase;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.15s ease-in-out;
+  &:hover:not(.mobile):not(.switcherOptionActive) {
+    --accent-40: color-mix(in srgb, var(--accent) 40%, transparent);
+    background-color: var(--accent-40);
+  }
+}
+
+.switcherOptionActive {
+  background-color: var(--accent);
+}
+
+@media screen and (max-width: 768px) {
+  .switcherInner {
+    top: 44px;
+    left: 0;
+    transform: unset;
+    z-index: 1000;
+  }
+}

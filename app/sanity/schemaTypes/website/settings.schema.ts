@@ -5,6 +5,13 @@ const settingsSchema = defineType({
   title: "Общие настройки",
   type: "document",
   fields: [
+    // Language field required for document internationalization
+    defineField({
+      name: "language",
+      type: "string",
+      readOnly: true,
+      hidden: true,
+    }),
     defineField({
       name: "siteName",
       title: "Название сайта",
@@ -64,6 +71,13 @@ const settingsSchema = defineType({
         {
           type: "object",
           fields: [
+    // Language field required for document internationalization
+    defineField({
+      name: "language",
+      type: "string",
+      readOnly: true,
+      hidden: true,
+    }),
             defineField({
               name: "platform",
               title: "Платформа",

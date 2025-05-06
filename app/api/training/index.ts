@@ -1,11 +1,12 @@
-import { fetchSanityData } from '../../lib/sanity-utils'
-import { Training } from '../../lib/types'
+import { fetchSanityData } from "../../lib/sanity-utils";
+import { Training } from "../../lib/types";
 
 /**
  * GROQ запрос для получения данных секции Training
  */
-const trainingQuery = `*[_type == "training"][0]{
+const trainingQuery = `*[_type == "training"]{
   _type,
+  language,
   title,
   description,
   slogan,
@@ -23,12 +24,12 @@ const trainingQuery = `*[_type == "training"][0]{
       alt
     }
   }
-}`
+}`;
 
 /**
  * Получает данные для секции Training
  * @returns Данные секции Training
  */
-export async function getTraining(): Promise<Training> {
-  return fetchSanityData<Training>(trainingQuery)
+export async function getTraining(): Promise<Training[]> {
+  return fetchSanityData<Training[]>(trainingQuery);
 }

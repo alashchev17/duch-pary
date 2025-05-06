@@ -8,6 +8,7 @@ import { useIsMobile } from "@/hooks/useIsMobile";
 import { Settings } from "@/app/lib/types";
 import { leftLinks, rightLinks } from "./consts";
 import { smoothScrollToAnchor } from "@/utils/smoothScroll";
+import { LanguageSwitcher } from "../LanguageSwitcher";
 
 // Combine all links for mobile menu
 const allLinks = [...leftLinks, ...rightLinks];
@@ -129,6 +130,7 @@ export const Header: React.FC<HeaderProps> = ({ externalLogo }) => {
                 </Link>
               ),
             )}
+            <LanguageSwitcher />
           </Flex>
         </Flex>
       )}

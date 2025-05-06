@@ -1,6 +1,13 @@
 /**
  * Базовые типы для Sanity
  */
+
+import { SanityLanguage } from "../api";
+
+export type BaseDocument = {
+  language: SanityLanguage;
+};
+
 export type SanityImage = {
   _type: "image";
   asset: {
@@ -49,7 +56,7 @@ export type SanityFileAsset = {
 /**
  * Типы для секции Hero
  */
-export type Hero = {
+export type Hero = BaseDocument & {
   _type: "hero";
   title: string;
   subtitle: string;
@@ -63,7 +70,7 @@ export type Hero = {
 /**
  * Типы для секции Slogan
  */
-export type Slogan = {
+export type Slogan = BaseDocument & {
   _type: "slogan";
   slogan: string;
   backgroundMedia: BackgroundMedia;
@@ -72,7 +79,7 @@ export type Slogan = {
 /**
  * Типы для секции About
  */
-export type About = {
+export type About = BaseDocument & {
   _type: "about";
   title: string;
   description: string;
@@ -86,7 +93,7 @@ export type About = {
 /**
  * Типы для секции Construction
  */
-export type Construction = {
+export type Construction = BaseDocument & {
   _type: "construction";
   title: string;
   description: string;
@@ -117,7 +124,7 @@ export type PortfolioMedia =
       alt?: string;
     };
 
-export type Portfolio = {
+export type Portfolio = BaseDocument & {
   _type: "portfolio";
   title: string;
   description?: string;
@@ -127,7 +134,7 @@ export type Portfolio = {
 /**
  * Типы для секции Accessories
  */
-export type Accessories = {
+export type Accessories = BaseDocument & {
   _type: "accessories";
   title: string;
   description: string;
@@ -144,7 +151,7 @@ export type Accessories = {
 /**
  * Типы для секции Training
  */
-export type Training = {
+export type Training = BaseDocument & {
   _type: "training";
   title: string;
   description: string;
@@ -159,7 +166,7 @@ export type Training = {
 /**
  * Типы для секции Contact
  */
-export type Contact = {
+export type Contact = BaseDocument & {
   _type: "contact";
   title: string;
   description: string;
@@ -169,7 +176,7 @@ export type Contact = {
 /**
  * Типы для секции Settings
  */
-export type Settings = {
+export type Settings = BaseDocument & {
   _type: "settings";
   siteName: string;
   email: string;
@@ -189,13 +196,13 @@ export type Settings = {
  * Тип для всех данных сайта
  */
 export type AllPageData = {
-  hero: Hero;
-  slogan: Slogan;
-  about: About;
-  construction: Construction;
-  portfolio: Portfolio;
-  accessories: Accessories;
-  training: Training;
-  contact: Contact;
-  settings: Settings;
+  hero: Hero[];
+  slogan: Slogan[];
+  about: About[];
+  construction: Construction[];
+  portfolio: Portfolio[];
+  accessories: Accessories[];
+  training: Training[];
+  contact: Contact[];
+  settings: Settings[];
 };

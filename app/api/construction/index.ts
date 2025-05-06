@@ -4,8 +4,9 @@ import { Construction } from "../../lib/types";
 /**
  * GROQ запрос для получения данных секции Construction
  */
-const constructionQuery = `*[_type == "construction"][0]{
+const constructionQuery = `*[_type == "construction"]{
   _type,
+  language,
   title,
   description,
   process[]{
@@ -38,6 +39,6 @@ const constructionQuery = `*[_type == "construction"][0]{
  * Получает данные для секции Construction
  * @returns Данные секции Construction
  */
-export async function getConstruction(): Promise<Construction> {
-  return fetchSanityData<Construction>(constructionQuery);
+export async function getConstruction(): Promise<Construction[]> {
+  return fetchSanityData<Construction[]>(constructionQuery);
 }

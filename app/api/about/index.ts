@@ -4,8 +4,9 @@ import { About } from "../../lib/types";
 /**
  * GROQ запрос для получения данных секции About
  */
-const aboutQuery = `*[_type == "about"][0]{
+const aboutQuery = `*[_type == "about"]{
   _type,
+  language,
   title,
   description,
   image{
@@ -28,6 +29,6 @@ const aboutQuery = `*[_type == "about"][0]{
  * Получает данные для секции About
  * @returns Данные секции About
  */
-export async function getAbout(): Promise<About> {
-  return fetchSanityData<About>(aboutQuery);
+export async function getAbout(): Promise<About[]> {
+  return fetchSanityData<About[]>(aboutQuery);
 }

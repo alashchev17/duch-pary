@@ -12,8 +12,7 @@ import {
 import { Input, Checkbox } from "@/components/design-system/Input";
 import { toast } from "@/hooks/use-toast";
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
-import { useFormState } from "react-dom";
+import React, { useActionState, useEffect, useState } from "react";
 
 export type ContactProps = {
   data: ContactData;
@@ -27,7 +26,7 @@ const initialState: FormState = {
 
 export const Contact: React.FC<ContactProps> = ({ data }) => {
   const { title, description, contactImage } = data;
-  const [formState, formAction] = useFormState(sendToTelegram, initialState);
+  const [formState, formAction] = useActionState(sendToTelegram, initialState);
   const [fields, setFields] = useState({
     name: "",
     email: "",
@@ -74,10 +73,6 @@ export const Contact: React.FC<ContactProps> = ({ data }) => {
       });
     }
   }, [formState.success, formState.globalError, formState.fieldErrors]);
-
-  useEffect(() => {
-    console.log(`[DEBUG]: fields: `, fields);
-  }, [fields]);
 
   return (
     <div id="contact" className="bg-white text-black py-8 md:py-16">

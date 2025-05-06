@@ -5,6 +5,13 @@ const contactSchema = defineType({
   title: "Свяжитесь с нами",
   type: "document",
   fields: [
+    // Language field required for document internationalization
+    defineField({
+      name: "language",
+      type: "string",
+      readOnly: true,
+      hidden: true,
+    }),
     defineField({
       name: "title",
       title: "Заголовок секции",

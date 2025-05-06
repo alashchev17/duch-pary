@@ -108,10 +108,10 @@ export const Footer: React.FC<FooterProps> = ({ data }) => {
                       variant="body"
                       className="uppercase md:lowercase md:text-[18px] md:leading-[150%]"
                     >
-                      <Flex className="items-center gap-4">
+                      <span className="flex items-center gap-4">
                         <EnvelopeIcon className="fill-brand-bg" />
                         {data.email}
-                      </Flex>
+                      </span>
                     </Typography>
                   </Link>
                   <Link href={`tel:${data.phone.split(" ").join("")}`}>
@@ -119,10 +119,10 @@ export const Footer: React.FC<FooterProps> = ({ data }) => {
                       variant="body"
                       className="uppercase md:lowercase md:text-[18px] md:leading-[150%]"
                     >
-                      <Flex className="items-center gap-4">
+                      <span className="flex items-center gap-4">
                         <PhoneIcon className="fill-brand-bg" />
                         {data.phone}
-                      </Flex>
+                      </span>
                     </Typography>
                   </Link>
                 </Flex>

@@ -5,6 +5,13 @@ const heroSchema = defineType({
   title: "Главная секция",
   type: "document",
   fields: [
+    // Language field required for document internationalization
+    defineField({
+      name: "language",
+      type: "string",
+      readOnly: true,
+      hidden: true,
+    }),
     defineField({
       name: "title",
       title: "Заголовок",
@@ -26,6 +33,13 @@ const heroSchema = defineType({
       type: "object",
       description: "Основное фоновое изображение или видео для главной секции",
       fields: [
+    // Language field required for document internationalization
+    defineField({
+      name: "language",
+      type: "string",
+      readOnly: true,
+      hidden: true,
+    }),
         {
           name: "type",
           title: "Тип медиа",
@@ -66,6 +80,13 @@ const heroSchema = defineType({
       title: "Кнопка действия",
       type: "object",
       fields: [
+    // Language field required for document internationalization
+    defineField({
+      name: "language",
+      type: "string",
+      readOnly: true,
+      hidden: true,
+    }),
         defineField({
           name: "text",
           title: "Текст кнопки",
