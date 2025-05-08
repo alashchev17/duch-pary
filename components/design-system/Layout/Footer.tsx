@@ -1,27 +1,31 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
+import Image from "next/image";
 
 import { Settings } from "@/app/lib/types";
+import { useLanguage } from "../LanguageSwitcher";
+import { urlFor } from "@/app/lib/sanity-utils";
+import { smoothScrollToAnchor } from "@/utils/smoothScroll";
+import { iconMapByPlatform, leftLinks, rightLinks } from "./consts";
 
 import Container from "./Container";
 import { FooterLogo } from "./FooterLogo";
-
-import { iconMapByPlatform, leftLinks, rightLinks } from "./consts";
 import Flex from "./Flex";
 import Typography from "../Typography";
-import Link from "next/link";
-import { EnvelopeIcon } from "../Icons/EnvelopeIcon";
+
 import { PhoneIcon } from "../Icons/PhoneIcon";
-import Image from "next/image";
-import { urlFor } from "@/app/lib/sanity-utils";
-import { smoothScrollToAnchor } from "@/utils/smoothScroll";
+import { EnvelopeIcon } from "../Icons/EnvelopeIcon";
+import { translationsMapByLanguage } from "@/components/sections/consts";
 
 export type FooterProps = {
   data: Settings;
 };
 
 export const Footer: React.FC<FooterProps> = ({ data }) => {
+  const { currentLanguage } = useLanguage();
+
   return (
     <footer className="bg-white text-black py-7 md:py-16">
       <Container>
@@ -34,7 +38,7 @@ export const Footer: React.FC<FooterProps> = ({ data }) => {
             <Flex direction="column" className="w-full">
               <div className="md:pl-6 pb-2 border-b-[3px] border-brand-primary w-full">
                 <Typography variant="header4" className="text-brand-primary">
-                  Навигация
+                  {translationsMapByLanguage.navigation[currentLanguage.code]}
                 </Typography>
               </div>
               <Flex className="w-full md:w-auto md:pl-9 pt-4 md:pt-5 justify-between md:justify-normal md:gap-9">
@@ -42,7 +46,7 @@ export const Footer: React.FC<FooterProps> = ({ data }) => {
                   {leftLinks.map((link) =>
                     link.href.startsWith("#") ? (
                       <Link
-                        key={link.label}
+                        key={link.label[currentLanguage.code]}
                         href={link.href}
                         onClick={(e) => smoothScrollToAnchor(e, link.href)}
                       >
@@ -50,16 +54,19 @@ export const Footer: React.FC<FooterProps> = ({ data }) => {
                           variant="body"
                           className="uppercase md:text-[18px] md:leading-[150%]"
                         >
-                          {link.label}
+                          {link.label[currentLanguage.code]}
                         </Typography>
                       </Link>
                     ) : (
-                      <Link key={link.label} href={link.href}>
+                      <Link
+                        key={link.label[currentLanguage.code]}
+                        href={link.href}
+                      >
                         <Typography
                           variant="body"
                           className="uppercase md:text-[18px] md:leading-[150%]"
                         >
-                          {link.label}
+                          {link.label[currentLanguage.code]}
                         </Typography>
                       </Link>
                     ),
@@ -69,7 +76,7 @@ export const Footer: React.FC<FooterProps> = ({ data }) => {
                   {rightLinks.map((link) =>
                     link.href.startsWith("#") ? (
                       <Link
-                        key={link.label}
+                        key={link.label[currentLanguage.code]}
                         href={link.href}
                         onClick={(e) => smoothScrollToAnchor(e, link.href)}
                       >
@@ -77,16 +84,19 @@ export const Footer: React.FC<FooterProps> = ({ data }) => {
                           variant="body"
                           className="uppercase md:text-[18px] md:leading-[150%]"
                         >
-                          {link.label}
+                          {link.label[currentLanguage.code]}
                         </Typography>
                       </Link>
                     ) : (
-                      <Link key={link.label} href={link.href}>
+                      <Link
+                        key={link.label[currentLanguage.code]}
+                        href={link.href}
+                      >
                         <Typography
                           variant="body"
                           className="uppercase md:text-[18px] md:leading-[150%]"
                         >
-                          {link.label}
+                          {link.label[currentLanguage.code]}
                         </Typography>
                       </Link>
                     ),
@@ -95,7 +105,7 @@ export const Footer: React.FC<FooterProps> = ({ data }) => {
               </Flex>
               <div className="md:pl-6 pb-2 border-b-[3px] border-brand-primary w-full mt-9">
                 <Typography variant="header4" className="text-brand-primary">
-                  Контакты
+                  {translationsMapByLanguage.contact[currentLanguage.code]}
                 </Typography>
               </div>
               <Flex

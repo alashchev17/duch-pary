@@ -7,6 +7,8 @@ import { Training as TrainingData } from "@/app/lib/types";
 import { urlFor } from "@/app/lib/sanity-utils";
 
 import { Flex, Typography } from "@/components/design-system";
+import { translationsMapByLanguage } from "../consts";
+import { useLanguage } from "@/components/design-system/LanguageSwitcher";
 
 export type TrainingProps = {
   data: TrainingData;
@@ -14,6 +16,8 @@ export type TrainingProps = {
 
 export const Training: React.FC<TrainingProps> = ({ data }) => {
   const { title, description, slogan, programs } = data;
+  const { currentLanguage } = useLanguage();
+
   return (
     <Flex id="training" direction="column" className="py-9 md:py-14">
       <Flex direction="column" className="mb-6 md:mb-8 md:max-w-[70%]">
@@ -21,7 +25,7 @@ export const Training: React.FC<TrainingProps> = ({ data }) => {
           variant="blockName"
           className="text-brand-primary mb-4 md:mb-6 uppercase"
         >
-          Обучение
+          {translationsMapByLanguage.training[currentLanguage.code]}
         </Typography>
         <Typography variant="header2" className="mb-2">
           {title}
@@ -45,7 +49,7 @@ export const Training: React.FC<TrainingProps> = ({ data }) => {
                   variant="menuBottoms"
                   className="text-brand-primary"
                 >
-                  Программа
+                  {translationsMapByLanguage.program[currentLanguage.code]}
                 </Typography>
                 <Flex direction="column" className="gap-2 md:gap-4">
                   <Typography variant="header4">{program.title}</Typography>

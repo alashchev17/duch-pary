@@ -7,13 +7,16 @@ import { useIsMobile } from "@/hooks/useIsMobile";
 import Image from "next/image";
 import React from "react";
 import { FeatureIcon } from "./FeatureIcon";
+import { translationsMapByLanguage } from "../consts";
+import { useLanguage } from "@/components/design-system/LanguageSwitcher";
 
 export type AboutProps = {
   data: AboutData;
 };
 
 export const About: React.FC<AboutProps> = ({ data }) => {
-  const { isMobile } = useIsMobile();
+  const { currentLanguage } = useLanguage();
+  const { isMobile, isLarge } = useIsMobile();
   const { image, description, title, features } = data;
   return (
     <Flex
@@ -22,16 +25,16 @@ export const About: React.FC<AboutProps> = ({ data }) => {
       className="gap-6 md:gap-4 md:py-[50px] py-8"
     >
       <Flex
-        direction={isMobile ? "column" : "row"}
+        direction={isLarge ? "column" : "row"}
         align="start"
         className="gap-4 md:gap-10"
       >
-        <Flex direction="column" className="md:max-w-[calc(50%-(40px/1.25))]">
+        <Flex direction="column" className="lg:max-w-[calc(50%-(40px/1.25))]">
           <Typography
             variant="blockName"
             className="text-brand-primary mb-6 uppercase"
           >
-            Про нас
+            {translationsMapByLanguage.about[currentLanguage.code]}
           </Typography>
           <Typography variant="header2" className="mb-2">
             {title}
@@ -52,7 +55,7 @@ export const About: React.FC<AboutProps> = ({ data }) => {
           className="
           w-full
           h-auto
-          md:h-[210px]
+          lg:h-[210px]
           grid
           gap-4
           grid-cols-1

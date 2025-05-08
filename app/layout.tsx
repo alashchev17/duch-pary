@@ -42,8 +42,10 @@ export default function RootLayout({
       <body
         className={`${manrope.variable} ${spectralSC.variable} ${nevduplenysh.variable} antialiased bg-dark-green`}
       >
-        <LanguageProvider>{children}</LanguageProvider>
-        <Toaster />
+        <LanguageProvider>
+          {children}
+          <Toaster />
+        </LanguageProvider>
       </body>
     </html>
   );

@@ -8,6 +8,8 @@ import { SectionVideo } from "../SectionVideo";
 import type { Construction as ConstructionData } from "@/app/lib/types";
 import { useIsMobile } from "@/hooks/useIsMobile";
 import { urlFor } from "@/app/lib/sanity-utils";
+import { translationsMapByLanguage } from "../consts";
+import { useLanguage } from "@/components/design-system/LanguageSwitcher";
 
 export type ConstructionProps = {
   data: ConstructionData;
@@ -15,6 +17,7 @@ export type ConstructionProps = {
 
 export const Construction: React.FC<ConstructionProps> = ({ data }) => {
   const { isMobile } = useIsMobile();
+  const { currentLanguage } = useLanguage();
   const { process, description, title } = data;
   return (
     <Flex
@@ -27,7 +30,7 @@ export const Construction: React.FC<ConstructionProps> = ({ data }) => {
           variant="blockName"
           className="text-brand-primary mb-6 uppercase"
         >
-          Строительство
+          {translationsMapByLanguage.construction[currentLanguage.code]}
         </Typography>
         <Typography variant="header2" className="mb-2">
           {title}

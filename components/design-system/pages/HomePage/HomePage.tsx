@@ -28,8 +28,6 @@ type LocalizedPageData = {
 export const HomePage: React.FC<HomePageProps> = ({ multilanguageData }) => {
   const { currentLanguage } = useLanguage();
 
-  console.log(`[DEBUG]: initial data: `, multilanguageData);
-
   const localizedData = useMemo(
     () =>
       Object.fromEntries(
@@ -64,10 +62,6 @@ export const HomePage: React.FC<HomePageProps> = ({ multilanguageData }) => {
       );
     }
   }, [settings]);
-
-  console.log(`[DEBUG]: localizedData: `, localizedData);
-  console.log(`[DEBUG]: currentLanguage: `, currentLanguage);
-  console.log(`[DEBUG]: initial settings: `, settings);
 
   return (
     <>

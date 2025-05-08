@@ -8,7 +8,8 @@ import { useIsMobile } from "@/hooks/useIsMobile";
 import { Settings } from "@/app/lib/types";
 import { leftLinks, rightLinks } from "./consts";
 import { smoothScrollToAnchor } from "@/utils/smoothScroll";
-import { LanguageSwitcher } from "../LanguageSwitcher";
+import { LanguageSwitcher, useLanguage } from "../LanguageSwitcher";
+import { translationsMapByLanguage } from "@/components/sections/consts";
 
 // Combine all links for mobile menu
 const allLinks = [...leftLinks, ...rightLinks];
@@ -43,6 +44,7 @@ export type HeaderProps = {
 
 export const Header: React.FC<HeaderProps> = ({ externalLogo }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { currentLanguage } = useLanguage();
   const { isMobile } = useIsMobile();
 
   // Close menu when clicking outside
@@ -98,11 +100,11 @@ export const Header: React.FC<HeaderProps> = ({ externalLogo }) => {
                   className={linkClasses}
                   onClick={(e) => smoothScrollToAnchor(e, link.href)}
                 >
-                  {link.label}
+                  {link.label[currentLanguage.code]}
                 </Link>
               ) : (
                 <Link key={link.href} href={link.href} className={linkClasses}>
-                  {link.label}
+                  {link.label[currentLanguage.code]}
                 </Link>
               ),
             )}
@@ -113,7 +115,7 @@ export const Header: React.FC<HeaderProps> = ({ externalLogo }) => {
             className="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2"
           />
 
-          <Flex className="gap-[36px]">
+          <Flex className="gap-[36px] items-center">
             {rightLinks.map((link) =>
               link.href.startsWith("#") ? (
                 <Link
@@ -122,11 +124,11 @@ export const Header: React.FC<HeaderProps> = ({ externalLogo }) => {
                   className={linkClasses}
                   onClick={(e) => smoothScrollToAnchor(e, link.href)}
                 >
-                  {link.label}
+                  {link.label[currentLanguage.code]}
                 </Link>
               ) : (
                 <Link key={link.href} href={link.href} className={linkClasses}>
-                  {link.label}
+                  {link.label[currentLanguage.code]}
                 </Link>
               ),
             )}
@@ -145,7 +147,10 @@ export const Header: React.FC<HeaderProps> = ({ externalLogo }) => {
           />
 
           {/* Burger menu icon */}
-          <BurgerIcon open={isMenuOpen} onClick={toggleMenu} />
+          <Flex className="gap-4 items-center">
+            <LanguageSwitcher />
+            <BurgerIcon open={isMenuOpen} onClick={toggleMenu} />
+          </Flex>
 
           {/* Mobile menu */}
           {isMenuOpen && (
@@ -164,7 +169,7 @@ export const Header: React.FC<HeaderProps> = ({ externalLogo }) => {
                           )
                         }
                       >
-                        {link.label}
+                        {link.label[currentLanguage.code]}
                       </Link>
                     ) : (
                       <Link
@@ -173,7 +178,7 @@ export const Header: React.FC<HeaderProps> = ({ externalLogo }) => {
                         className={mobileLinkClasses}
                         onClick={() => setIsMenuOpen(false)}
                       >
-                        {link.label}
+                        {link.label[currentLanguage.code]}
                       </Link>
                     ),
                   )}
@@ -190,7 +195,11 @@ export const Header: React.FC<HeaderProps> = ({ externalLogo }) => {
                     variant="primary"
                     className="absolute bottom-[24px] left-[20px] right-[20px] !text-brand-bg uppercase"
                   >
-                    Связаться
+                    {
+                      translationsMapByLanguage.shortCallToAction[
+                        currentLanguage.code
+                      ]
+                    }
                   </Button>
                 </Link>
               </div>

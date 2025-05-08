@@ -16,6 +16,8 @@ import { SectionVideo } from "../SectionVideo";
 import { useIsMobile } from "@/hooks/useIsMobile";
 import Link from "next/link";
 import { smoothScrollToAnchor } from "@/utils/smoothScroll";
+import { translationsMapByLanguage } from "../consts";
+import { useLanguage } from "@/components/design-system/LanguageSwitcher";
 
 export type PortfolioProps = {
   data: PortfolioData;
@@ -33,6 +35,7 @@ function chunkArray<T>(array: T[], chunkSize: number): T[][] {
 export const Portfolio: React.FC<PortfolioProps> = ({ data }) => {
   const { title, description, mediaItems } = data;
   const { isMobile, isLarge } = useIsMobile();
+  const { currentLanguage } = useLanguage();
 
   const heightOfRow = useMemo(() => {
     if (isMobile) return 410;
@@ -73,7 +76,7 @@ export const Portfolio: React.FC<PortfolioProps> = ({ data }) => {
               variant="primary"
               className="border-none text-nowrap uppercase w-full md:w-auto"
             >
-              Записаться на консультацию
+              {translationsMapByLanguage.callToAction[currentLanguage.code]}
             </Button>
           </Link>
         </Flex>

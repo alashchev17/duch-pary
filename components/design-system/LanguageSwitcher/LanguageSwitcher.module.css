@@ -6,6 +6,7 @@
   font-size: 18px;
   font-weight: 700;
   text-transform: uppercase;
+  font-family: var(--font-manrope);
   display: inline-flex;
   gap: 8px;
   align-items: center;
@@ -13,8 +14,9 @@
   padding: 8px;
   border-radius: 8px;
   transition: background-color 0.15s ease-in-out;
+  border: 2px solid var(--color-brand-primary);
   &:hover:not(.mobile) {
-    background-color: var(--accent);
+    background-color: var(--color-brand-primary);
   }
 }
 
@@ -34,12 +36,12 @@
   visibility: hidden;
   z-index: 10;
   border-radius: 12px;
-  border: 2px solid var(--accent);
+  border: 2px solid var(--color-brand-primary);
   padding: 8px;
   transition:
     opacity 0.15s ease-in-out,
     visibility 0.15s ease-in-out;
-  background-color: var(--tertiary-brand);
+  background-color: var(--color-brand-bg);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -54,6 +56,9 @@
 }
 
 .switcherOption {
+  display: inline-block;
+  width: 100%;
+  text-align: center;
   padding: 8px;
   text-transform: uppercase;
   border-radius: 8px;
@@ -61,19 +66,25 @@
   transition: background-color 0.15s ease-in-out;
   &:hover:not(.mobile):not(.switcherOptionActive) {
     --accent-40: color-mix(in srgb, var(--accent) 40%, transparent);
-    background-color: var(--accent-40);
+    background-color: var(--color-brand-non-accent-1);
   }
 }
 
 .switcherOptionActive {
-  background-color: var(--accent);
+  background-color: var(--color-brand-non-accent-1);
 }
 
 @media screen and (max-width: 768px) {
+  .switcher {
+    font-size: 14px;
+    gap: 6px;
+    padding: 6px 8px;
+  }
   .switcherInner {
-    top: 44px;
-    left: 0;
-    transform: unset;
+    top: 42.5px;
     z-index: 1000;
+  }
+  .switcherChevron {
+    scale: 0.75;
   }
 }

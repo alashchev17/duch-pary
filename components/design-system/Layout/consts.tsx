@@ -7,21 +7,37 @@ import { YouTubeIcon } from "../Icons/YouTubeIcon";
 
 export const leftLinks = [
   {
-    label: "Про нас",
+    label: {
+      ru: "Про нас",
+      en: "About us",
+      pl: "O nas",
+    },
     href: "#about",
   },
   {
-    label: "Строительство",
+    label: {
+      ru: "Строительство",
+      en: "Construction",
+      pl: "Budowa",
+    },
     href: "#construction",
   },
 ];
 export const rightLinks = [
   {
-    label: "Аксессуары",
+    label: {
+      ru: "Аксессуары",
+      en: "Accessories",
+      pl: "Akcesoria",
+    },
     href: "#accessories",
   },
   {
-    label: "Обучение",
+    label: {
+      ru: "Обучение",
+      en: "Training",
+      pl: "Szkolenie",
+    },
     href: "#training",
   },
 ];

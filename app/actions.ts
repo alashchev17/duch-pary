@@ -1,5 +1,40 @@
 "use server";
 
+import { Language } from "@/components/design-system/LanguageSwitcher/language";
+
+const statusesTranslations = {
+  nameError: {
+    ru: "Укажите Ваше имя!",
+    en: "Enter your name!",
+    pl: "Podaj swój imię!",
+  },
+  emailError: {
+    ru: "Укажите Вашу электронную почту!",
+    en: "Enter your email!",
+    pl: "Podaj swój adres e-mail!",
+  },
+  emailValidationError: {
+    ru: "Введите корректную электронную почту!",
+    en: "Enter a valid email!",
+    pl: "Podaj poprawny adres e-mail!",
+  },
+  messageError: {
+    ru: "Введите Ваше сообщение!",
+    en: "Enter your message!",
+    pl: "Podaj swój komunikat!",
+  },
+  acceptedPolicy: {
+    ru: "Примите условия пользования!",
+    en: "Accept the terms of use!",
+    pl: "Zatwierdź warunki korzystania!",
+  },
+  globalError: {
+    ru: "Ошибка отправки сообщения. Попробуйте позже.",
+    en: "Error sending the message. Try again later.",
+    pl: "Błąd wysyłania wiadomości. Spróbuj później.",
+  },
+};
+
 export type FormState = {
   fieldErrors?: {
     name?: string;
@@ -16,6 +51,7 @@ const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 export async function sendToTelegram(
   prevState: FormState,
   formData: FormData,
+  language: Language,
 ): Promise<FormState> {
   const name = formData.get("name");
   const email = formData.get("email");
@@ -24,15 +60,18 @@ export async function sendToTelegram(
 
   const fieldErrors: FormState["fieldErrors"] = {};
 
-  if (!name) fieldErrors.name = "Укажите Ваше имя!";
+  if (!name) fieldErrors.name = statusesTranslations.nameError[language.code];
   if (!email) {
-    fieldErrors.email = "Укажите Вашу электронную почту!";
+    fieldErrors.email = statusesTranslations.emailError[language.code];
   } else if (typeof email !== "string" || !EMAIL_REGEX.test(email)) {
-    fieldErrors.email = "Введите корректную электронную почту!";
+    fieldErrors.email =
+      statusesTranslations.emailValidationError[language.code];
   }
-  if (!message) fieldErrors.message = "Введите Ваше сообщение!";
+  if (!message)
+    fieldErrors.message = statusesTranslations.messageError[language.code];
   if (!acceptedPolicy)
-    fieldErrors.acceptedPolicy = "Примите условия пользования!";
+    fieldErrors.acceptedPolicy =
+      statusesTranslations.acceptedPolicy[language.code];
 
   if (Object.keys(fieldErrors).length > 0) {
     return { fieldErrors };
@@ -47,7 +86,7 @@ export async function sendToTelegram(
     second: "2-digit",
   });
 
-  const text = `Новая отправка формы:\n\nИмя: ${name}\nПочта: ${email}\nСообщение: ${message}\n\nВремя отправки сообщения: ${now}`;
+  const text = `Новая отправка формы:\n\nИмя: ${name}\nПочта: ${email}\nСообщение: ${message}\n\nВремя отправки сообщения: ${now}\nЯзык пользователя: ${language.code.toUpperCase()}`;
 
   const sendMessageUrl = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
 
@@ -63,12 +102,13 @@ export async function sendToTelegram(
     const data = await res.json();
 
     if (!data.ok) {
-      return { globalError: "Ошибка отправки сообщения. Попробуйте позже." };
+      console.error(data);
+      return { globalError: statusesTranslations.globalError[language.code] };
     }
 
     return { success: true };
   } catch (error) {
     console.error(error);
-    return { globalError: "Ошибка отправки сообщения. Попробуйте позже." };
+    return { globalError: statusesTranslations.globalError[language.code] };
   }
 }

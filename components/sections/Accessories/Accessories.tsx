@@ -7,6 +7,8 @@ import { SectionImage } from "../SectionImage";
 import { urlFor } from "@/app/lib/sanity-utils";
 import Link from "next/link";
 import { smoothScrollToAnchor } from "@/utils/smoothScroll";
+import { translationsMapByLanguage } from "../consts";
+import { useLanguage } from "@/components/design-system/LanguageSwitcher";
 
 export type AccessoriesProps = {
   data: AccessoriesData;
@@ -14,6 +16,7 @@ export type AccessoriesProps = {
 
 export const Accessories: React.FC<AccessoriesProps> = ({ data }) => {
   const { title, description, cardImages, perks, slogan } = data;
+  const { currentLanguage } = useLanguage();
   return (
     <Flex id="accessories" direction="column" className="py-9 md:py-14">
       <Flex direction="column" className="mb-6 md:mb-8">
@@ -21,7 +24,7 @@ export const Accessories: React.FC<AccessoriesProps> = ({ data }) => {
           variant="blockName"
           className="text-brand-primary mb-4 md:mb-6 uppercase"
         >
-          Банные печи и аксессуары
+          {translationsMapByLanguage.accessories[currentLanguage.code]}
         </Typography>
         <Typography variant="header2" className="mb-2">
           {title}
@@ -77,7 +80,11 @@ export const Accessories: React.FC<AccessoriesProps> = ({ data }) => {
             onClick={(e) => smoothScrollToAnchor(e, "#contact")}
           >
             <Button variant="secondary" className="uppercase">
-              Связаться
+              {
+                translationsMapByLanguage.shortCallToAction[
+                  currentLanguage.code
+                ]
+              }
             </Button>
           </Link>
         </Flex>

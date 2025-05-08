@@ -12,10 +12,18 @@ import {
 import { Input, Checkbox } from "@/components/design-system/Input";
 import { toast } from "@/hooks/use-toast";
 import Image from "next/image";
-import React, { useActionState, useEffect, useState } from "react";
+import React, { useActionState, useCallback, useEffect, useState } from "react";
+import { translationsMapByLanguage } from "../consts";
+import { useLanguage } from "@/components/design-system/LanguageSwitcher";
 
 export type ContactProps = {
   data: ContactData;
+};
+
+const successStatusTranslations = {
+  ru: "Успешно отправлено!",
+  en: "Successfully sent!",
+  pl: "Pomyślnie wysłane!",
 };
 
 const initialState: FormState = {
@@ -26,7 +34,19 @@ const initialState: FormState = {
 
 export const Contact: React.FC<ContactProps> = ({ data }) => {
   const { title, description, contactImage } = data;
-  const [formState, formAction] = useActionState(sendToTelegram, initialState);
+  const { currentLanguage } = useLanguage();
+  const sentToTelegramWithLang = useCallback(
+    (prevState: FormState, formData: FormData) => {
+      return sendToTelegram(prevState, formData, currentLanguage);
+    },
+    [currentLanguage],
+  );
+
+  const [formState, formAction] = useActionState(
+    sentToTelegramWithLang,
+    initialState,
+  );
+
   const [fields, setFields] = useState({
     name: "",
     email: "",
@@ -63,7 +83,7 @@ export const Contact: React.FC<ContactProps> = ({ data }) => {
 
     if (formState.success) {
       toast({
-        title: "Успешно отправлено!",
+        title: successStatusTranslations[currentLanguage.code],
       });
       setFields({
         name: "",
@@ -72,7 +92,12 @@ export const Contact: React.FC<ContactProps> = ({ data }) => {
         acceptedPolicy: false,
       });
     }
-  }, [formState.success, formState.globalError, formState.fieldErrors]);
+  }, [
+    formState.success,
+    formState.globalError,
+    formState.fieldErrors,
+    currentLanguage,
+  ]);
 
   return (
     <div id="contact" className="bg-white text-black py-8 md:py-16">
@@ -104,21 +129,23 @@ export const Contact: React.FC<ContactProps> = ({ data }) => {
               value={fields.name}
               onChange={handleChange}
               state={formState.fieldErrors?.name ? "error" : "default"}
-              placeholder="Имя"
+              placeholder={translationsMapByLanguage.name[currentLanguage.code]}
             />
             <Input
               name="email"
               value={fields.email}
               onChange={handleChange}
               state={formState.fieldErrors?.email ? "error" : "default"}
-              placeholder="Почта"
+              placeholder={
+                translationsMapByLanguage.email[currentLanguage.code]
+              }
             />
             <Input
               name="message"
               value={fields.message}
               onChange={handleChange}
               state={formState.fieldErrors?.message ? "error" : "default"}
-              placeholder="Сообщение..."
+              placeholder={`${translationsMapByLanguage.message[currentLanguage.code]}...`}
               textarea
             />
             <Checkbox
@@ -130,13 +157,15 @@ export const Contact: React.FC<ContactProps> = ({ data }) => {
                 setFields((prev) => ({ ...prev, acceptedPolicy: checked }))
               }
               name="accepted-policy"
-              label="Принять условия пользования"
+              label={
+                translationsMapByLanguage.acceptConditions[currentLanguage.code]
+              }
             />
             <Button
               variant="contact"
               className="uppercase mt-auto w-full md:w-auto"
             >
-              Записаться на консультацию
+              {translationsMapByLanguage.callToAction[currentLanguage.code]}
             </Button>
           </form>
         </Flex>
